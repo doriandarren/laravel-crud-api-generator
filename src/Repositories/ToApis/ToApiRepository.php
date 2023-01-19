@@ -5,9 +5,12 @@ namespace Infinito\LaravelCrudApiGenerator\Repositories\ToApis;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiDestroyController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListPaginateController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiMigration;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiModel;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiPostman;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiRepository;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiRoute;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiScript;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiShowController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiStoreController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiUpdateController;
@@ -74,6 +77,8 @@ class ToApiRepository
         $pathModel = $dir . "/" . "app/Models/" . $classNamePluralUp;
         $pathRepository = $dir . "/" . "app/Repositories/" . $classNamePluralUp;
         $pathRoute = $dir . "/" . "routes";
+        $pathMigration = $dir . "/" . "database/migrations";
+        $pathScript = $dir . "/" . "public/SCRIPT_GENERATOR";
 
 
 
@@ -191,8 +196,44 @@ class ToApiRepository
 
 
 
+        /****************
+         * MIGRATION
+         ****************/
+        $fileBackEnd = new GenerateToApiMigration();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathMigration);
+        if($okBackEnd){
+            $response .= "Ready module API Back <br>";
+        }
 
 
+
+
+
+        /****************
+         * SCRIPT TXT
+         ****************/
+        $fileBackEnd = new GenerateToApiScript();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathScript);
+        if($okBackEnd){
+            $response .= "Ready module API Script <br>";
+        }
+
+
+
+        /****************
+         * Export Collection Postman
+         ****************/
+        $fileBackEnd = new GenerateToApiPostman();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathScript);
+        if($okBackEnd){
+            $response .= "Ready module API Postman <br>";
+        }
 
 
 
