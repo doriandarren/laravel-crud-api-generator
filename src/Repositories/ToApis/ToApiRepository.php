@@ -5,6 +5,7 @@ namespace Infinito\LaravelCrudApiGenerator\Repositories\ToApis;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiDestroyController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListPaginateController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiModel;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiShowController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiStoreController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiUpdateController;
@@ -68,12 +69,12 @@ class ToApiRepository
 
         $dir = dirname(__FILE__,7);
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
+        $pathModel = $dir . "/" . "app/Models/" . $classNamePluralUp;
 
 
-        //echo "RUTA: " . $pathController;
-
-
-
+        /***************
+         * CONTROLLERS
+         **************/
 
         // List
         $fileBackEnd = new GenerateToApiListController();
@@ -139,6 +140,19 @@ class ToApiRepository
         }
 
 
+
+
+        /****************
+         * MODEL
+         ****************/
+
+        $fileModel = new GenerateToApiModel();
+        $okRepository = $fileModel->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathModel);
+        if($okRepository){
+            $response .= "Ready module Model <br>";
+        }
 
 
 
