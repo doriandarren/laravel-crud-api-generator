@@ -62,7 +62,7 @@ class ToApiRepository
 
 
 
-        $dir = dirname(__FILE__,4);
+        $dir = dirname(__FILE__,6);
 
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
@@ -72,7 +72,7 @@ class ToApiRepository
 
         echo "<br>---<br>";
 
-        echo $containing_dir = basename(dirname(__FILE__));
+        //echo $containing_dir = basename(dirname(__FILE__));
 
 
 
