@@ -53,4 +53,22 @@ class HelperFiles
     }
 
 
+
+
+    public static function createFile($path, $contents)
+    {
+
+        if(!file_exists($path)){
+            mkdir($path, 0777, true);
+        }
+
+        // Write File
+        $fh = fopen($path, 'w+') or die("Error open file: " . $path);
+        fwrite($fh, $contents)or die("Error write file: " . $path);
+        fclose($fh);
+
+    }
+
+
+
 }

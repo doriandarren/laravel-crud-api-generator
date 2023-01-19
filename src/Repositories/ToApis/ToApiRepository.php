@@ -2,7 +2,12 @@
 
 namespace Infinito\LaravelCrudApiGenerator\Repositories\ToApis;
 
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiDestroyController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListPaginateController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiShowController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiStoreController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiUpdateController;
 
 class ToApiRepository
 {
@@ -61,15 +66,11 @@ class ToApiRepository
 
 
 
-
         $dir = dirname(__FILE__,7);
-
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
 
-        echo "RUTA: " . $pathController;
-
-
+        //echo "RUTA: " . $pathController;
 
 
 
@@ -82,6 +83,70 @@ class ToApiRepository
         if($okBackEnd){
             $response = "<br> Ready module API List <br>";
         }
+
+
+        // List Paginate
+        $fileBackEnd = new GenerateToApiListPaginateController();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType);
+        if($okBackEnd){
+            $response .= "Ready module API list Paginate <br>";
+        }
+
+
+
+        // Show
+        $fileBackEnd = new GenerateToApiShowController();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType);
+        if($okBackEnd){
+            $response .= "Ready module API Show <br>";
+        }
+
+
+
+
+        // Store
+        $fileBackEnd = new GenerateToApiStoreController();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType);
+        if($okBackEnd){
+            $response .= "Ready module API Store <br>";
+        }
+
+
+        // Update
+        $fileBackEnd = new GenerateToApiUpdateController();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType);
+        if($okBackEnd){
+            $response .= "Ready module API Update <br>";
+        }
+
+
+
+        // Destroy
+        $fileBackEnd = new GenerateToApiDestroyController();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType);
+        if($okBackEnd){
+            $response .= "Ready module API Destroy <br>";
+        }
+
+
+
+
+
+
+
+
+
+
 
 
 
