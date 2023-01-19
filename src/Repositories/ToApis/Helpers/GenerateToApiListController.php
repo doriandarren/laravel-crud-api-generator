@@ -81,14 +81,15 @@ class GenerateToApiListController
         $contents .= HelperFiles::formatLineBreakAndTab('}');
 
 
+        echo "$path";
 
         if(!file_exists($path)){
             mkdir($path, 0777, true);
         }
 
         // Write File
-        $fh = fopen($path . '/' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller.php', 'w+') or die("Error al crrear fichero: " . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller.php');
-        fwrite($fh, $contents);
+        $fh = fopen($path . '/' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller.php');
+        fwrite($fh, $contents)or die("Error write file: " . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller.php');
         fclose($fh);
 
 

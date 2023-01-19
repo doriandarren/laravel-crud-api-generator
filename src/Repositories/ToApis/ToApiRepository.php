@@ -63,7 +63,8 @@ class ToApiRepository
 
 
         $dir = dirname(__FILE__,5);
-        $pathController = $dir . "/" . "app/Http/Conttrollers/" . $classNamePluralUp;
+
+        $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
 
 
