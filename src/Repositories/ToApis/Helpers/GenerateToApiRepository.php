@@ -98,7 +98,15 @@ class GenerateToApiRepository
 
         for($i=0; $i<count($columns); $i++){
             if($i == 0){
-                $contents .= HelperFiles::formatLineBreakAndTab('$q->where(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")', null, 1, 4);
+
+                $q = '$q->where(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")';
+
+                if(count($columns) == 1){
+                    $q .= ';';
+                }
+
+                $contents .= HelperFiles::formatLineBreakAndTab($q, null, 1, 4);
+
             }else if((count($columns) -1 ) == $i){
                 $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%");', null, 1, 5);
             }else{

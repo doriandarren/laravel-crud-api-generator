@@ -25,8 +25,15 @@ class ToApiRepository
 
         $classNameSingularUp = ucwords($tableSingular);
         $classNamePluralUp = ucwords($tablePlural);
+        $nameSpace = str_replace("/", '\\', $nameSpace);
+        $response = '';
 
-        //Convert to example_class
+
+
+        /***************
+         * Convert to
+         * example_class
+         **************/
         $arr = preg_split('/(?=[A-Z])/', $tableSingular);
         $tableNameWithGuion = '';
         for ($i = 0; $i < count($arr); $i++) {
@@ -37,7 +44,6 @@ class ToApiRepository
             }
         }
 
-        //Convert to example_class
         $arr = preg_split('/(?=[A-Z])/', $tablePlural);
         $tableNameWithGuionPlural = '';
         for ($i = 0; $i < count($arr); $i++) {
@@ -48,12 +54,12 @@ class ToApiRepository
             }
         }
 
-        $nameSpace = str_replace("/", '\\', $nameSpace);
-
-        $response = '';
 
 
 
+        /***************
+         * PATH's
+         **************/
         $dir = dirname(__FILE__,7);
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
         $pathModel = $dir . "/" . "app/Models/" . $classNamePluralUp;

@@ -57,7 +57,7 @@ class GenerateToApiMigration
 
 
         //Class
-        $contents .= HelperFiles::formatLineBreakAndTab("class $classNameSingularUp extends Migration", null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab("return new class extends Migration", null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab("{", null, 1);
 
 
@@ -115,12 +115,13 @@ class GenerateToApiMigration
         $contents .= HelperFiles::formatLineBreakAndTab("public function down()", null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab("{", null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab("Schema::connection('api')->dropIfExists('". strtolower($tableNameWithGuionPlural) ."');", null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab("}", null, 4, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab("}", null, 2, 1);
 
         //END class
-        $contents .= HelperFiles::formatLineBreakAndTab("}", null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab("};", null, 1);
 
 
+        $date = date('Y_m_d_H_i_s');
 
 
 
@@ -130,8 +131,8 @@ class GenerateToApiMigration
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/create_' . strtolower($tableNameWithGuionPlural) . '_table_.php', 'w+') or die("Error open file: create_" . strtolower($tableNameWithGuionPlural) . '_table.php');
-            fwrite($fh, $contents)or die("Error write file: create_" . $tableNameWithGuionPlural .  '_table.php');
+            $fh = fopen($path . '/'.$date.'create_' . strtolower($tableNameWithGuionPlural) . '_table_.php', 'w+') or die("Error open file: '.$date.'create_" . strtolower($tableNameWithGuionPlural) . '_table.php');
+            fwrite($fh, $contents)or die("Error write file: '.$date.'create_" . $tableNameWithGuionPlural .  '_table.php');
             fclose($fh);
 
             return true;
