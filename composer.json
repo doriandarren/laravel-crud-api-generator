@@ -1,0 +1,16 @@
+{
+    "name": "infinito/laravel-crud-api-generator",
+    "description": "Crud generator by laravel",
+    "autoload": {
+        "psr-4": {
+            "Infinito\\LaravelCrudApiGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dorian",
+            "email": "doriandarren1@gmail.com"
+        }
+    ],
+    "require": {}
+}
