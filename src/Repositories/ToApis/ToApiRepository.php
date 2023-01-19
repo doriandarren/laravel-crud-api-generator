@@ -2,6 +2,7 @@
 
 namespace Infinito\LaravelCrudApiGenerator\Repositories\ToApis;
 
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiByRouteWeb;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiDestroyController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListPaginateController;
@@ -68,6 +69,19 @@ class ToApiRepository
         $pathMigration = $dir . "/" . "database/migrations";
         $pathScript = $dir . "/" . "public/SCRIPT_GENERATOR";
 
+
+
+
+        /***************
+         * Write Web
+         **************/
+
+
+        (new GenerateToApiByRouteWeb())->__invoke($pathRoute);
+
+
+
+        die();
 
 
 
@@ -226,7 +240,7 @@ class ToApiRepository
 
 
 
-        echo $response;
+        //echo $response;
 
 
     }
