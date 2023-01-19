@@ -28,8 +28,7 @@ class Generator
         $relationType = "1";
         $nameSpace = "Bounded";
         $templateType = "3";
-
-
+        
 
         (new ToApiRepository())->__invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace, $templateType);
 
