@@ -67,12 +67,10 @@ class ToApiRepository
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
 
+        echo "RUTA: " . $pathController;
 
-        echo "RUTA: " . $dir;
 
-        echo "<br>---<br>";
 
-        //echo $containing_dir = basename(dirname(__FILE__));
 
 
 
