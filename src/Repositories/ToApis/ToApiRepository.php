@@ -67,6 +67,8 @@ class ToApiRepository
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
 
+        echo $pathController;
+
 
         // List
         $fileBackEnd = new GenerateToApiListController();
