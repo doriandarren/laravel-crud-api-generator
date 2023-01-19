@@ -9,8 +9,13 @@
     "authors": [
         {
             "name": "Dorian",
-            "email": "doriandarren1@gmail.com"
+            "email": "doriandarren1@gmail.com",
+            "role": "Developer"
         }
     ],
-    "require": {}
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0"
+    },
+    "license": "MIT"
 }
