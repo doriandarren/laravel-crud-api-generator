@@ -24,10 +24,39 @@ Folder structure
 To implement class or method
 
 ```sh
+
+
+
+
 class ClassName {
     public function methodName(){
-        $generator = new \Infinito\LaravelCrudApiGenerator\Generator();
-        $generator->__invoke();
+        
+        // Ex.
+        $tableSingular = "telepassElconSwitzerland";
+        $tablePlural = "telepassElconSwitzerlands";
+
+        $ob = new \stdClass();
+        $ob->name =  "company_id";
+        $ob->type =  "input";
+        
+        $columns = [
+            $ob
+        ];
+
+        $relationClass = "LevelOne";
+        $relationType = "1";
+        $nameSpace = "Bounded";
+        $templateType = "3";
+
+        (new \Infinito\LaravelCrudApiGenerator\Generator())->__invoke(
+                                                                $tableSingular, 
+                                                                $tablePlural, 
+                                                                $columns, 
+                                                                $relationClass, 
+                                                                $relationType, 
+                                                                $nameSpace, 
+                                                                $templateType
+                                                            );
     }
 }
 ```

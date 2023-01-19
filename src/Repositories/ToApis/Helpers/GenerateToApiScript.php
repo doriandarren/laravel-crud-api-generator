@@ -54,8 +54,8 @@ class GenerateToApiScript
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/Script.txt', 'w+') or die("Error open file: Script.txt");
-            fwrite($fh, $contents)or die("Error write file: Script.txt");
+            $fh = fopen($path . '/Script_'.$classNameSingularUp.'.txt', 'w+') or die("Error open file: Script_'.$classNameSingularUp.'.txt");
+            fwrite($fh, $contents)or die("Error write file: Script_'.$classNameSingularUp.'.txt");
             fclose($fh);
 
             return true;

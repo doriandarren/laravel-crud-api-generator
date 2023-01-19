@@ -39,7 +39,7 @@ class GenerateToApiModel
 
         //Header
         $contents .= HelperFiles::formatLineBreakAndTab("<?php",null,2);
-        $contents .= HelperFiles::formatLineBreakAndTab("namespace App\Models\\". $nameSpace .';',null,2);
+        $contents .= HelperFiles::formatLineBreakAndTab("namespace App\Models\\". $classNamePluralUp .';',null,2);
         $contents .= HelperFiles::formatLineBreakAndTab("//use App\Models\SystemConst;",null,1);
         $contents .= HelperFiles::formatLineBreakAndTab("use Illuminate\Database\Eloquent\Model;",null,2);
         //End Header

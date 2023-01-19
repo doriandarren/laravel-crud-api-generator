@@ -19,26 +19,8 @@ class ToApiRepository
 {
 
 
-    public function __invoke()
+    public function __invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace, $templateType)
     {
-
-        $tableSingular = "telepassElconSwitzerland";
-        $tablePlural = "telepassElconSwitzerlands";
-
-        $ob = new \stdClass();
-        $ob->name =  "company_id";
-        $ob->type =  "input";
-
-        $columns = [
-            $ob
-        ];
-
-        $relationClass = "LevelOne";
-        $relationType = "1";
-        $nameSpace = "Bounded";
-        $templateType = "3";
-
-
 
 
         $classNameSingularUp = ucwords($tableSingular);
