@@ -89,7 +89,7 @@ class ToApiRepository
         $fileBackEnd = new GenerateToApiListPaginateController();
         $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
             $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType);
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
         if($okBackEnd){
             $response .= "Ready module API list Paginate <br>";
         }
@@ -100,7 +100,7 @@ class ToApiRepository
         $fileBackEnd = new GenerateToApiShowController();
         $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
             $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType);
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
         if($okBackEnd){
             $response .= "Ready module API Show <br>";
         }
@@ -112,7 +112,7 @@ class ToApiRepository
         $fileBackEnd = new GenerateToApiStoreController();
         $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
             $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType);
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
         if($okBackEnd){
             $response .= "Ready module API Store <br>";
         }
@@ -122,7 +122,7 @@ class ToApiRepository
         $fileBackEnd = new GenerateToApiUpdateController();
         $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
             $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType);
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
         if($okBackEnd){
             $response .= "Ready module API Update <br>";
         }
@@ -133,7 +133,7 @@ class ToApiRepository
         $fileBackEnd = new GenerateToApiDestroyController();
         $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
             $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType);
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
         if($okBackEnd){
             $response .= "Ready module API Destroy <br>";
         }

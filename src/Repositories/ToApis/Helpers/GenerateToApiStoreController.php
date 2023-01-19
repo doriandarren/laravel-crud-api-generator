@@ -20,11 +20,12 @@ class GenerateToApiStoreController
      * @param $tableNameWithGuionPlural
      * @param $relationClass
      * @param $relationType
+     * @param $path
      * @return bool
      */
     public function __invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType, $classNameSingularUp,
                              $classNamePluralUp, $tableNameWithGuion, $tableNameWithGuionPlural, $relationClass,
-                             $relationType): bool
+                             $relationType, $path): bool
     {
 
 
@@ -122,7 +123,22 @@ class GenerateToApiStoreController
 
 
 
-        return true;
+        try {
+
+            if(!file_exists($path)){
+                mkdir($path, 0777, true);
+            }
+            // Write File
+            $fh = fopen($path . '/' . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller.php');
+            fwrite($fh, $contents)or die("Error write file: " . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller.php');
+            fclose($fh);
+
+            return true;
+
+        }catch (\Exception $e){
+            return false;
+        }
+
 
     }
 
