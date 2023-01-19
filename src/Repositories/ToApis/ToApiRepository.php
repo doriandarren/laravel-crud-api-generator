@@ -67,7 +67,13 @@ class ToApiRepository
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
 
+
         echo "RUTA: " . $dir;
+
+        echo "<br>---<br>";
+
+        echo $containing_dir = basename(dirname(__FILE__));
+
 
 
         // List
@@ -76,7 +82,7 @@ class ToApiRepository
             $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
             $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
         if($okBackEnd){
-            $response = "Ready module API List <br>";
+            $response = "<br> Ready module API List <br>";
         }
 
 
