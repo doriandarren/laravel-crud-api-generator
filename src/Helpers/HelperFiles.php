@@ -55,6 +55,25 @@ class HelperFiles
 
 
 
+    /**
+     * Find "_Id" inside text
+     *
+     * Ex. "employee_id" find "_id"  return true
+     *
+     * @param $str string employee_id
+     * @return bool
+     */
+    public static function isIdInsideWord(string $str): bool
+    {
+
+        if (strpos($str, '_id') !== false) {
+            return true;
+        }
+
+        return false;
+
+    }
+
 
 
 
