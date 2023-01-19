@@ -67,7 +67,7 @@ class ToApiRepository
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
 
 
-        echo $pathController;
+        echo "RUTA: " . $dir;
 
 
         // List
