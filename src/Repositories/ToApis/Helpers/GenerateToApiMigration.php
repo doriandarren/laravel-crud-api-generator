@@ -121,7 +121,7 @@ class GenerateToApiMigration
         $contents .= HelperFiles::formatLineBreakAndTab("};", null, 1);
 
 
-        $date = date('Y_m_d_H_i_s');
+        $date = date('Y_m_d_His');
 
 
 
@@ -131,7 +131,7 @@ class GenerateToApiMigration
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/'.$date.'create_' . strtolower($tableNameWithGuionPlural) . '_table_.php', 'w+') or die("Error open file: '.$date.'create_" . strtolower($tableNameWithGuionPlural) . '_table.php');
+            $fh = fopen($path . '/'.$date.'create_' . strtolower($tableNameWithGuionPlural) . '_table.php', 'w+') or die("Error open file: '.$date.'create_" . strtolower($tableNameWithGuionPlural) . '_table.php');
             fwrite($fh, $contents)or die("Error write file: '.$date.'create_" . $tableNameWithGuionPlural .  '_table.php');
             fclose($fh);
 
