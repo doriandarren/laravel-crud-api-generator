@@ -6,6 +6,8 @@ use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiDe
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListPaginateController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiModel;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiRepository;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiRoute;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiShowController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiStoreController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiUpdateController;
@@ -70,6 +72,11 @@ class ToApiRepository
         $dir = dirname(__FILE__,7);
         $pathController = $dir . "/" . "app/Http/Controllers/" . $classNamePluralUp;
         $pathModel = $dir . "/" . "app/Models/" . $classNamePluralUp;
+        $pathRepository = $dir . "/" . "app/Repositories/" . $classNamePluralUp;
+        $pathRoute = $dir . "/" . "routes";
+
+
+
 
 
         /***************
@@ -154,6 +161,32 @@ class ToApiRepository
             $response .= "Ready module Model <br>";
         }
 
+
+
+
+
+        /****************
+         * REPOSITORY
+         ****************/
+        $fileRepository = new GenerateToApiRepository();
+        $okRepository = $fileRepository->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType, $pathRepository);
+        if($okRepository){
+            $response .= "Ready module Repository <br>";
+        }
+
+
+
+
+        /****************
+         * ROUTES
+         ****************/
+        $fileBackEnd = new GenerateToApiRoute();
+        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+            $tableNameWithGuionPlural, $relationClass, $relationType, $pathRoute);
+        if($okBackEnd){
+            $response .= "Ready module API Back <br>";
+        }
 
 
 
