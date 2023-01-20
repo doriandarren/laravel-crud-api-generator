@@ -37,13 +37,9 @@ class GenerateToApiInsideRouteWeb
 
         $patWeb =  $pathRoute . '/web.php';
 
-        $str = 'Route::get(\'/generator\', function () {
-    return view(\'generator\');
-});';
+        $str = 'Route::get(\'/generator\', function () { \n\t return view(\'generator\'); \n});';
 
-        $str .= '
-        
-';
+        $str .= '\n';
 
         $str .= 'Route::post(\'/generator/create\', [Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
 
