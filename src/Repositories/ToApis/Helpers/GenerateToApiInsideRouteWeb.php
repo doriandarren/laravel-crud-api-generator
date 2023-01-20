@@ -396,26 +396,26 @@ class GenerateToApiInsideRouteWeb
     {
 
 
-        $contents = HelperFiles::formatLineBreakAndTab('<?php', null, 1);
+        $contents = HelperFiles::formatLineBreakAndTab('<?php', null, 2);
 
         $contents .= HelperFiles::formatLineBreakAndTab('namespace App\\Http\\Controllers\\Generator;', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\Controller;', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\\Http\\Request;', null, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use Infinito\\LaravelCrudApiGenerator\\Generator;', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use Infinito\\LaravelCrudApiGenerator\\Generator;', null, 2);
 
         $contents .= HelperFiles::formatLineBreakAndTab('class GeneratorController extends Controller', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function __invoke(Request $request)', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('$this->validate($request, [', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab(' \'table_singular\' => \'required\',', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('\'table_singular\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'table_plural\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'columns\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'relation_class\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'relation_type\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'name_space\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'template_type\' => \'required\',', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab(']);', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab(']);', null, 2, 2);
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('$tableSingular = $request->table_singular;', null, 1, 2);
@@ -424,18 +424,19 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('$relationType = $request->relation_type;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$templateType = $request->template_type;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$nameSpace = $request->name_space;', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$columns = json_decode(json_encode($request->columns));', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$columns = json_decode(json_encode($request->columns));', null, 2, 2);
+
         $contents .= HelperFiles::formatLineBreakAndTab('try {', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('(new Generator())->__invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace, $templateType);', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('} catch (\\Exception $e) {', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('return response()->json($e->getMessage());', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('return response()->json(\'OK\');', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 1);
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1);
-        
+
 
 
         try {
