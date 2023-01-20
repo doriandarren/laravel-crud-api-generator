@@ -20,6 +20,20 @@ Folder structure
 
 ```
 
+Add inside exception "VerifyCsrfToken.php"
+
+```sh
+
+...
+ protected $except = [
+    'generator/*', // <---- This Line
+    ...
+ ];
+...
+
+```
+
+
 
 To implement class or method
 
