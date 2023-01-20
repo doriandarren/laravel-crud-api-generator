@@ -34,16 +34,11 @@ class GenerateToApiInsideRouteWeb
         //TODO Validar que exista
 
 
-
         $patWeb =  $pathRoute . '/web.php';
-
-        $str = 'Route::get(\'/generator\', function () { \n\t return view(\'generator\'); \n});';
-
-        $str .= '\n';
-
+        $str = 'Route::get(\'/generator\', function () { '.PHP_EOL.' return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL;
         $str .= 'Route::post(\'/generator/create\', [Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
 
-
+        
         $fp = fopen($patWeb, "a+");
         fputs($fp, $str);
         fclose($fp);
