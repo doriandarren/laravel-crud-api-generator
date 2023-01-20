@@ -33,7 +33,7 @@ class GenerateToApiInsideRouteWeb
 
         //TODO Validar que exista
 
-        
+
 
         $patWeb =  $pathRoute . '/web.php';
 
