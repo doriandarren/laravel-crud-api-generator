@@ -19,7 +19,7 @@
     },
     "scripts": {
         "post-package-install": [
-            "Infinito\\LaravelCrudApiGenerator\\PostPackageInstall::postPackageInstall"
+            "Infinito\\LaravelCrudApiGenerator\\Scripts::postPackageInstall"
         ]
     },
     "license": "MIT"
