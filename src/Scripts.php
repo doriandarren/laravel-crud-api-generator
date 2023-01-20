@@ -3,14 +3,12 @@
 namespace Infinito\LaravelCrudApiGenerator;
 
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiInsideRouteWeb;
-use Composer\Script\Event;
-use Composer\Installer\PackageEvent;
 
 
 class Scripts
 {
 
-    public static function index(Event $event)
+    public static function index()
     {
 
         /***************
