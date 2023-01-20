@@ -8,7 +8,7 @@ use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiIn
 class Scripts
 {
 
-    public static function index()
+    public function __invoke()
     {
 
         /***************
