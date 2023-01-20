@@ -3,11 +3,14 @@
 namespace Infinito\LaravelCrudApiGenerator;
 
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiInsideRouteWeb;
+use Composer\Script\Event;
+use Composer\Installer\PackageEvent;
+
 
 class Scripts
 {
 
-    public static function postPackageInstall()
+    public static function postPackageInstall(Event $event)
     {
 
         echo "PASAAAAAAA";
