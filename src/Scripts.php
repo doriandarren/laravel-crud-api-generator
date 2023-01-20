@@ -10,6 +10,8 @@ class Scripts
     public static function postPackageInstall()
     {
 
+        echo "PASAAAAAAA";
+
         /***************
          * PATH's
          **************/
