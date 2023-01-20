@@ -14,7 +14,7 @@ class Scripts
         /***************
          * PATH's
          **************/
-        $dir = dirname(__FILE__,7);
+        $dir = dirname(__FILE__,2);
         $pathResources = $dir . "/" . "resources/views";
         $pathRoute = $dir . "/" . "routes";
 
