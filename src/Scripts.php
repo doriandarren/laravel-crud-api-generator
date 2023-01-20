@@ -17,13 +17,14 @@ class Scripts
         $dir = dirname(__FILE__,5);
         $pathResources = $dir . "/" . "resources/views";
         $pathRoute = $dir . "/" . "routes";
+        $pathController = $dir . "/app/Http/Controllers/";
 
 
         /***************
          * Write Web
          **************/
         // Add Route inside Web
-        (new GenerateToApiInsideRouteWeb())->__invoke($pathRoute, $pathResources);
+        (new GenerateToApiInsideRouteWeb())->__invoke($pathRoute, $pathResources, $pathController);
 
     }
 

@@ -35,6 +35,7 @@ class GenerateToApiDestroyController
 
 
         // Use
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNamePluralUp . '\\' . $classNameSingularUp . ';', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Http\JsonResponse;', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Http\Request;', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\Http\Controllers\Controller;', null, 1);
