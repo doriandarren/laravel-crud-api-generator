@@ -18,7 +18,7 @@
         "php": ">=8.0"
     },
     "scripts": {
-        "do-something": "Infinito\\LaravelCrudApiGenerator\\Scripts::postPackageInstall"
+        "do-something": "Infinito\\LaravelCrudApiGenerator\\Scripts::__invoke"
     },
     "license": "MIT"
 }

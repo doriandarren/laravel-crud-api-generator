@@ -10,7 +10,7 @@ use Composer\Installer\PackageEvent;
 class Scripts
 {
 
-    public static function postPackageInstall(Event $event)
+    public static function __invoke(Event $event)
     {
 
         /***************
