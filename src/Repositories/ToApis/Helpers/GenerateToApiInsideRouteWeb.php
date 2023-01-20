@@ -36,7 +36,7 @@ class GenerateToApiInsideRouteWeb
 
         $patWeb =  $pathRoute . '/web.php';
         $str = 'Route::get(\'/generator\', function () { '.PHP_EOL.' return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL;
-        $str .= 'Route::post(\'/generator/create\', [Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
+        $str .= 'Route::post(\'/generator/create\', [App\Http\Controllers\Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
 
 
         $fp = fopen($patWeb, "a+");
@@ -186,7 +186,6 @@ class GenerateToApiInsideRouteWeb
 
 
         // Block
-        $contents .= HelperFiles::formatLineBreakAndTab('<div class="grid grid-cols-3 gap-4 mt-10">', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="form-group mb-6">', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="relation_type_id">', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('Tipo de Relación', null, 1, 6);
@@ -222,23 +221,24 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('value="ClassRelacion"', null, 1, 6);
         $contents .= HelperFiles::formatLineBreakAndTab('>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
 
 
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('<hr>', null, 1, 4);
-        $contents .= HelperFiles::formatLineBreakAndTab('<hr>', null, 1, 4);
-        $contents .= HelperFiles::formatLineBreakAndTab('<div class="flex flex-wrap -mx-3 mb-6">', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('<hr>', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('<hr>', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="flex flex-wrap -mx-3 mb-6">', null, 1, 3);
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('<div class="w-full px-3">', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="w-full px-3">', null, 1, 4);
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">', null, 1, 6);
-        $contents .= HelperFiles::formatLineBreakAndTab('Columnas', null, 1, 7);
-        $contents .= HelperFiles::formatLineBreakAndTab('</label>', null, 1, 6);
-        $contents .= HelperFiles::formatLineBreakAndTab('<div id="div_column"></div>', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('Columnas', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('</label>', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div id="div_column"></div>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
