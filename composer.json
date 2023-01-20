@@ -18,7 +18,7 @@
         "php": ">=8.0"
     },
     "scripts": {
-        "post-autoload-dump": [
+        "post-package-install": [
             "Infinito\\LaravelCrudApiGenerator\\Scripts::postPackageInstall"
         ]
     },
