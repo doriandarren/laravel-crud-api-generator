@@ -19,6 +19,10 @@ class Scripts
         $pathRoute = $dir . "/" . "routes";
 
 
+
+        echo $pathRoute;
+
+
         /***************
          * Write Web
          **************/
