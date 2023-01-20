@@ -38,7 +38,7 @@ class GenerateToApiInsideRouteWeb
         $str = 'Route::get(\'/generator\', function () { '.PHP_EOL.' return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL;
         $str .= 'Route::post(\'/generator/create\', [Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
 
-        
+
         $fp = fopen($patWeb, "a+");
         fputs($fp, $str);
         fclose($fp);

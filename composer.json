@@ -17,5 +17,10 @@
     "require": {
         "php": ">=8.0"
     },
+    "scripts": {
+        "post-package-install": [
+            "Infinito\\LaravelCrudApiGenerator\\PostPackageInstall::postPackageInstall"
+        ]
+    },
     "license": "MIT"
-}
+},
