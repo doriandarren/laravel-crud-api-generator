@@ -33,16 +33,17 @@ class GenerateToApiInsideRouteWeb
 
         //TODO Validar que exista
 
+        
 
         $patWeb =  $pathRoute . '/web.php';
 
         $str = 'Route::get(\'/generator\', function () {
-        return view(\'generator\');
-        });';
+    return view(\'generator\');
+});';
 
         $str .= '
         
-        ';
+';
 
         $str .= 'Route::post(\'/generator/create\', [Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
 
@@ -74,6 +75,8 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('</head>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<body>', null, 1);
+
+        // BEGIN
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="flex mb-4">', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="w-full bg-gray-500 h-12"></div>', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 1);
@@ -163,16 +166,14 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
 
 
-
-
-
+        // END
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
 
 
 
 
 
-
+        //START
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="grid grid-cols-3 gap-4">', null, 1, 3);
 
 
@@ -260,128 +261,115 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('id="save"', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('>', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('Generar', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('</button>', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
-
-
-
+        $contents .= HelperFiles::formatLineBreakAndTab('</button>', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
 
 
 
+        //END
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 2);
 
-        //$contents .= HelperFiles::formatLineBreakAndTab('', null, 1, 3);
-        
-    /*
-
-
-    <script>
-
-    let input_format = document.getElementById("input_format");
-        let div_column = document.getElementById("div_column");
-
-        let table_singular = document.getElementById("table_singular");
-        let table_plural = document.getElementById("table_plural");
-        let columns = document.getElementById("columns");
-        let relation_type_id = document.getElementById("relation_type_id");
-        let relation_class_id = document.getElementById("relation_class_id");
-        let name_space = document.getElementById("name_space");
-        let template_type = document.getElementById("template_type");
-
-
-        function formatColumns() {
-
-            div_column.innerHTML = '';
-            let p = input_format.value;
-            let arrayString = p.split(' ');
-
-
-            for (let i = 0; i < arrayString.length; i++) {
-
-                let select = document.createElement( 'select' );
-                select.name = 'sel_' + i;
-                select.id = 'sel_' + i;
-                select.className = 'form-select column_type_group';
-                let option;
-                let inputdata = 'text||select||radio';
-
-                inputdata.split( '||' ).forEach(function( item ) {
-                    option = document.createElement( 'option' );
-                    option.value = item;
-                    option.textContent = item;
-                    select.appendChild( option );
-                });
-
-                let divCont = document.createElement('div');
-                divCont.className = 'form-group';
-
-                let input = document.createElement('input');
-                input.type = 'text';
-                input.name = 'col_' + i;
-                input.id = 'col_' + i;
-                input.className = "form-control column_name_group mb-2";
-                input.value = arrayString[i];
-
-                divCont.appendChild(select);
-                divCont.appendChild(input);
-
-                div_column.appendChild(divCont);
-            }
-        }
-
-
-        async function readForm()
-    {
-        let data = {};
-            data.table_singular = table_singular.value;
-            data.table_plural = table_plural.value;
-            data.relation_class = relation_class_id.value;
-            data.relation_type = relation_type_id.value;
-            data.name_space = name_space.value;
-            data.template_type = template_type.options[template_type.selectedIndex].value;
-
-            let column_name_group = document.getElementsByClassName("column_name_group");
-            let column_type_group = document.getElementsByClassName("column_type_group");
-
-            let arr = [];
-            for(let i = 0; i < column_name_group.length; i++){
-        let d = {};
-                d.name = column_name_group[i].value;
-                d.type = column_type_group[i].value;
-                arr.push(d);
-            }
-            data.columns = arr;
-
-            const res = await fetch('{{ route('generator.create') }}', {
-        method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-            'Content-Type': 'application/json',
-                    'Accept': '*',
-                },
-            });
-
-            const response = await res.json();
-            console.log(response);
-
-        }
-
-
-        document.querySelector("#save").addEventListener('click', readForm);
-        document.querySelector("#btn_format").addEventListener('click', formatColumns);
-
-    </script>
-
-</body>
-</html>
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 1);
 
 
 
 
-*/
+        $contents .= HelperFiles::formatLineBreakAndTab('<script>', null, 1, 1);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('let input_format = document.getElementById("input_format");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let div_column = document.getElementById("div_column");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let table_singular = document.getElementById("table_singular");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let table_plural = document.getElementById("table_plural");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let columns = document.getElementById("columns");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let relation_type_id = document.getElementById("relation_type_id");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let relation_class_id = document.getElementById("relation_class_id");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let name_space = document.getElementById("name_space");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let template_type = document.getElementById("template_type");', null, 3, 2);
 
 
 
+        $contents .= HelperFiles::formatLineBreakAndTab('function formatColumns() {', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('div_column.innerHTML = \'\';', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let p = input_format.value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let arrayString = p.split(\' \');', null, 2, 3);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('for (let i = 0; i < arrayString.length; i++) {', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let select = document.createElement( \'select\' );', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('select.name = \'sel_\' + i;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('select.id = \'sel_\' + i;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('select.className = \'form-select column_type_group\';', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('let option;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('let inputdata = \'text||select||radio\';', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('inputdata.split( \'||\' ).forEach(function( item ) {', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('option = document.createElement( \'option\' );', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('option.value = item;', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('option.textContent = item;', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('select.appendChild( option );', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('});', null, 2, 4);
+
+
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('let divCont = document.createElement(\'div\');', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('divCont.className = \'form-group\';', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('let input = document.createElement(\'input\');', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('input.type = \'text\';', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('input.name = \'col_\' + i;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('input.id = \'col_\' + i;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('input.className = "form-control column_name_group mb-2";', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('input.value = arrayString[i];', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('divCont.appendChild(select);', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('divCont.appendChild(input);', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('div_column.appendChild(divCont);', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('async function readForm()', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let data = {};', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.table_singular = table_singular.value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.table_plural = table_plural.value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.relation_class = relation_class_id.value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.relation_type = relation_type_id.value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.name_space = name_space.value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.template_type = template_type.options[template_type.selectedIndex].value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let column_name_group = document.getElementsByClassName("column_name_group");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let column_type_group = document.getElementsByClassName("column_type_group");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let arr = [];', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('for(let i = 0; i < column_name_group.length; i++){', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let d = {};', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('d.name = column_name_group[i].value;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('d.type = column_type_group[i].value;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('arr.push(d);', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.columns = arr;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('const res = await fetch(\'{{ route(\'generator.create\') }}\', {', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('method: "POST",', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('body: JSON.stringify(data),', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('headers: {', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('\'Content-Type\': \'application/json\',', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('\'Accept\': \'*\',', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('},', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('});', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('const response = await res.json();', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('console.log(response);', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('document.querySelector("#save").addEventListener(\'click\', readForm);', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('document.querySelector("#btn_format").addEventListener(\'click\', formatColumns);', null, 1, 2);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('</script>', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('</body>', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('</html>', null, 1);
 
 
 
