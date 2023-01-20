@@ -18,9 +18,7 @@
         "php": ">=8.0"
     },
     "scripts": {
-        "post-package-install": [
-            "Infinito\\LaravelCrudApiGenerator\\Scripts::postPackageInstall"
-        ]
+        "do-something": "Infinito\\LaravelCrudApiGenerator\\Scripts::postPackageInstall"
     },
     "license": "MIT"
 }

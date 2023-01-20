@@ -13,8 +13,6 @@ class Scripts
     public static function postPackageInstall(Event $event)
     {
 
-        echo "PASAAAAAAA";
-
         /***************
          * PATH's
          **************/
