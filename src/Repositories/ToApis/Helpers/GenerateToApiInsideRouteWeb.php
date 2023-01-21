@@ -406,7 +406,7 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('class GeneratorController extends Controller', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function __invoke(Request $request)', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 2, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('$this->validate($request, [', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('\'table_singular\' => \'required\',', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('\'table_plural\' => \'required\',', null, 1, 3);
