@@ -39,8 +39,8 @@ class GenerateToApiRoute
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\\Support\\Facades\\Route;',null,2);
-
         
+
 
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('* '. $classNamePluralUp,null,1);
