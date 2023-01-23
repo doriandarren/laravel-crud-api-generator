@@ -32,8 +32,17 @@ class GenerateToApiRoute
         $contents = HelperFiles::formatLineBreakAndTab('<?php',null,3);
 
 
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::LIST_PAGINATE . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::SHOW . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller;',null,2);
+
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* AUTH',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* '. $classNamePluralUp,null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/',null,3);
 
 
