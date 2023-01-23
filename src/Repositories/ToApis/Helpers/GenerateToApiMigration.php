@@ -154,7 +154,7 @@ class GenerateToApiMigration
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/'.$date.'create_' . strtolower($tableNameWithGuionPlural) . '_table.php', 'w+') or die("Error open file: '.$date.'create_" . strtolower($tableNameWithGuionPlural) . '_table.php');
+            $fh = fopen($path . '/'.$date.'_create_' . strtolower($tableNameWithGuionPlural) . '_table.php', 'w+') or die("Error open file: '.$date.'create_" . strtolower($tableNameWithGuionPlural) . '_table.php');
             fwrite($fh, $contents)or die("Error write file: '.$date.'create_" . $tableNameWithGuionPlural .  '_table.php');
             fclose($fh);
 
