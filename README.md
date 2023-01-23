@@ -3,60 +3,7 @@
 
 For new project.  
 
-1.- Excute:
-
-```sh
-
-php artisan make:controller Dev/TestController
-
-```
-
-2.- add inside Dev/TestController
-
-
-```sh
-
-...
-
-use Infinito\LaravelCrudApiGenerator\Scripts;
-
-...
-
-
-class TestController {
-    public function __invoke(){
-        (new Scripts())->__invoke();
-        echo "Ready!";
-    }
-}
-
-```
-
-
-3.- add web.php:
-
-```sh
-
-Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'])->name('test');
-
-```
-
-4.- Add inside "app/Http\Middleware\VerifyCsrfToken" exception "VerifyCsrfToken.php"
-
-```sh
-
-...
- protected $except = [
-    'generator/*', // <---- This Line
-    ...
- ];
-...
-
-```
-
-
-
-5.- Install package
+1.- Install package:
 
 ```sh
 
@@ -69,6 +16,64 @@ composer require infinito/laravel-crud-api-generator:dev-main
 
 For remove:
 composer remove infinito/laravel-crud-api-generator
+
+```
+
+
+2.-Excute 
+
+```sh
+
+php artisan make:controller Dev/TestController
+
+```
+
+
+3.- Add Dev/TestController add web.php: 
+
+```sh
+
+...
+
+use Infinito\LaravelCrudApiGenerator\Scripts;
+
+...
+
+
+class TestController {
+
+    public function __invoke(){
+    
+        (new Scripts())->__invoke();
+        echo "Ready!";
+        
+    }
+    
+}
+
+```
+
+
+4.- Add web.php:
+
+```sh
+
+Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'])->name('test');
+
+```
+
+
+
+5.- Add inside "app/Http\Middleware\VerifyCsrfToken" exception "VerifyCsrfToken.php"
+
+```sh
+
+...
+ protected $except = [
+    'generator/*', // <---- This Line
+    ...
+ ];
+...
 
 ```
 
