@@ -80,6 +80,7 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('<meta name="viewport" content="width=device-width, initial-scale=1">', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<title>Generator</title>', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('</head>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<body>', null, 1);
 
@@ -362,7 +363,18 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('},', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('});', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('const response = await res.json();', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('console.log(response);', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('//console.log(response);', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('Swal.fire({', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('position: \'top-end\',', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('icon: \'success\',', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('title: \'Ficheros creados\',', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('showConfirmButton: false,', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('timer: 1500', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('})', null, 1, 3);
+
+
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
 
 
