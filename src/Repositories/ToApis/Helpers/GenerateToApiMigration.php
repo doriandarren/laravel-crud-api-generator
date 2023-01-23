@@ -91,7 +91,6 @@ class GenerateToApiMigration
 
 
 
-
         for($i=0; $i<count($columns); $i++)
         {
 
