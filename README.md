@@ -78,7 +78,16 @@ Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'
 ```
 
 
-6.- 
+6.- Add first time Postman or request get by URl
+
+```sh
+
+http://127.0.0.1:8090/test
+
+```
+
+
+7.- Then see form
 
 ```sh
 
