@@ -23,13 +23,9 @@ class GenerateToApiInsideRouteWeb
 
         $this->createWebRoute($pathRoute);
 
-
         $this->createPageForm($pathResources);
 
-
         $this->createController($pathController);
-
-
 
     }
 
@@ -50,8 +46,8 @@ class GenerateToApiInsideRouteWeb
         }
 
         if(!$flag){
-            $str = PHP_EOL . '// Route By GENERATOR ' . self::FLAG_ROUTE . PHP_EOL;
-            $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL;
+            $str = PHP_EOL . PHP_EOL . '// Route By GENERATOR ' . self::FLAG_ROUTE . PHP_EOL;
+            $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL. PHP_EOL;
             $str .= 'Route::post(\'/generator/create\', [App\Http\Controllers\Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
             fputs($fp, $str);
         }
@@ -401,7 +397,10 @@ class GenerateToApiInsideRouteWeb
 
 
 
-
+    /**
+     * @param $path
+     * @return void
+     */
     private function createController($path)
     {
 
@@ -459,10 +458,11 @@ class GenerateToApiInsideRouteWeb
             fwrite($fh, $contents)or die("Error write file: GeneratorController.php" );
             fclose($fh);
 
-            return true;
+            return;
 
         }catch (\Exception $e){
-            return false;
+
+            return;
         }
 
 

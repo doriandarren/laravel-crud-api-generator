@@ -17,7 +17,7 @@ class Scripts
         $dir = dirname(__FILE__,5);
         $pathResources = $dir . "/" . "resources/views";
         $pathRoute = $dir . "/" . "routes";
-        $pathController = $dir . "/app/Http/Controllers/";
+        $pathController = $dir . "/app/Http/Controllers";
 
 
         /***************
