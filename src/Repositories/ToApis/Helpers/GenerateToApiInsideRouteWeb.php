@@ -243,34 +243,31 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('Columnas', null, 1, 6);
         $contents .= HelperFiles::formatLineBreakAndTab('</label>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('<div id="div_column"></div>', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 2);
 
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('<div class="px-6 pt-4 pb-2">', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('<button', null, 1, 4);
-        $contents .= HelperFiles::formatLineBreakAndTab('class="px-3 py-3 bg-blue-600 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('id="save"', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('>', null, 1, 4);
-        $contents .= HelperFiles::formatLineBreakAndTab('Generar', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('</button>', null, 1, 4);
-        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="px-6 pt-4 pb-2">', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('<button', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('class="px-3 py-3 bg-blue-600 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('id="save"', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('>', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('Generar', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('</button>', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 2);
 
 
 
         //END
-        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 2);
-
-        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 3, 1);
 
 
 
-
+        // Script
         $contents .= HelperFiles::formatLineBreakAndTab('<script>', null, 1, 1);
-
 
         $contents .= HelperFiles::formatLineBreakAndTab('let input_format = document.getElementById("input_format");', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('let div_column = document.getElementById("div_column");', null, 1, 2);
@@ -362,7 +359,10 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('document.querySelector("#btn_format").addEventListener(\'click\', formatColumns);', null, 1, 2);
 
 
+        // End Script
         $contents .= HelperFiles::formatLineBreakAndTab('</script>', null, 1, 1);
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('</body>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('</html>', null, 1);
 

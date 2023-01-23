@@ -11,8 +11,29 @@ php artisan make:controller Dev/TestController
 
 ```
 
+2.- add inside Dev/TestController
 
-2.- add web.php:
+
+```sh
+
+...
+
+use Infinito\LaravelCrudApiGenerator\Scripts;
+
+...
+
+
+class TestController {
+    public function __invoke(){
+        (new Scripts())->__invoke();
+        echo "Ready!";
+    }
+}
+
+```
+
+
+3.- add web.php:
 
 ```sh
 
@@ -20,7 +41,7 @@ Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'
 
 ```
 
-3.- Add inside "app/Http\Middleware\VerifyCsrfToken" exception "VerifyCsrfToken.php"
+4.- Add inside "app/Http\Middleware\VerifyCsrfToken" exception "VerifyCsrfToken.php"
 
 ```sh
 
@@ -34,7 +55,7 @@ Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'
 ```
 
 
-4.- Install package
+5.- Install package
 
 ```sh
 
@@ -50,22 +71,11 @@ composer remove infinito/laravel-crud-api-generator
 ```
 
 
-5.- To implement class or method
+6.- 
 
 ```sh
 
-...
-
-use Infinito\LaravelCrudApiGenerator\Scripts;
-
-...
-
-
-class ClassTest {
-    public function methodTest(){
-        (new Scripts())->__invoke();
-    }
-}
+http://127.0.0.1:8090/generator
 
 ```
 
