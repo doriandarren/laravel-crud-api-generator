@@ -92,9 +92,19 @@ class GenerateToApiMigration
 
 
 
-        for($i=0; $i<count($columns); $i++){
+        for($i=0; $i<count($columns); $i++)
+        {
 
-            $contents .= HelperFiles::formatLineBreakAndTab("\$table->string('" . $columns[$i]->name . "')->nullable();", null, 1, 4);
+            if(strpos($columns[$i]->name, EnumFolderToApi::USE_CASE_ID) !== false){
+
+                $exp = explode('_id', $columns[$i]->name);
+
+                $contents .= HelperFiles::formatLineBreakAndTab("\$table->unsignedBigInteger('" . $columns[$i]->name . "');", null, 1, 4);
+                $contents .= HelperFiles::formatLineBreakAndTab("\$table->foreign('" . $columns[$i]->name . "')->references('id')->on('".$exp[0]."');", null, 1, 4);
+
+            }else{
+                $contents .= HelperFiles::formatLineBreakAndTab("\$table->string('" . $columns[$i]->name . "')->nullable();", null, 1, 4);
+            }
 
         }
 
@@ -114,7 +124,21 @@ class GenerateToApiMigration
         $contents .= HelperFiles::formatLineBreakAndTab("*/", null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab("public function down()", null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab("{", null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab("Schema::connection('api')->dropIfExists('". strtolower($tableNameWithGuionPlural) ."');", null, 1, 2);
+
+        for($i=0; $i<count($columns); $i++)
+        {
+            if(strpos($columns[$i]->name, EnumFolderToApi::USE_CASE_ID) !== false)
+            {
+                $contents .= HelperFiles::formatLineBreakAndTab('if (Schema::connection(\'api\')->hasColumn(\''.strtolower($tableNameWithGuionPlural).'\', \''.$columns[$i]->name.'\')) {', null, 1, 2);
+                $contents .= HelperFiles::formatLineBreakAndTab('Schema::connection(\'api\')->table(\''.strtolower($tableNameWithGuionPlural).'\', function (Blueprint $table) {', null, 1, 3);
+                $contents .= HelperFiles::formatLineBreakAndTab('$table->dropForeign([\''.$columns[$i]->name.'\']);', null, 1, 4);
+                $contents .= HelperFiles::formatLineBreakAndTab('$table->dropColumn(\''.$columns[$i]->name.'\');', null, 1, 4);
+                $contents .= HelperFiles::formatLineBreakAndTab('});', null, 1, 3);
+                $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+            }
+        }
+
+        $contents .= HelperFiles::formatLineBreakAndTab("Schema::connection('api')->dropIfExists('". strtolower($tableNameWithGuionPlural) ."');", null, 1, 2, 2);
         $contents .= HelperFiles::formatLineBreakAndTab("}", null, 2, 1);
 
         //END class

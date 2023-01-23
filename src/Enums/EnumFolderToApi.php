@@ -34,5 +34,8 @@ abstract class EnumFolderToApi
     const USE_TO_ROLE = 'employee_id';
 
 
+    const USE_CASE_ID = '_id';
+
+
 
 }

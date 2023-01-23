@@ -39,7 +39,7 @@ class GenerateToApiRoute
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\\Support\\Facades\\Route;',null,2);
-        
+
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1);
@@ -48,18 +48,17 @@ class GenerateToApiRoute
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('Route::group([\'prefix\' => \''.$tablePlural.'/\'], function () {',null,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('Route::group([\'prefix\' => EnumApiSetup::API_VERSION . \''.$tablePlural.'/\'], function () {',null,2);
         $contents .= HelperFiles::formatLineBreakAndTab('Route::group([\'middleware\' => \'auth:sanctum\'], function() {',null,2, 1);
 
 
-
-        $contents .= HelperFiles::formatLineBreakAndTab('// TO TEST',null,1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// Route::get(\'list\', [' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller::class, \'__invoke\'])',null,1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// Route::get(\'list/paginate\', [' . $classNameSingularUp . EnumFolderToApi::LIST_PAGINATE . 'Controller::class, \'__invoke\'])',null,1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// Route::get(\'show/{' . $tableNameWithGuion . ':id}\', [' . $classNameSingularUp . EnumFolderToApi::SHOW . 'Controller::class, \'__invoke\'])',null,1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// Route::post(\'store\', [' . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller::class, \'__invoke\'])',null,1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// Route::put(\'update/{' . $tableNameWithGuion . ':id}\', [' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller::class, \'__invoke\'])',null,1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// Route::delete(\'delete/{' . $tableNameWithGuion . ':id}\', [' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller::class, \'__invoke\'])',null,2, 3);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// TO TEST',null,1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// Route::get(\'list\', [' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller::class, \'__invoke\'])',null,1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// Route::get(\'list/paginate\', [' . $classNameSingularUp . EnumFolderToApi::LIST_PAGINATE . 'Controller::class, \'__invoke\'])',null,1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// Route::get(\'show/{' . $tableNameWithGuion . ':id}\', [' . $classNameSingularUp . EnumFolderToApi::SHOW . 'Controller::class, \'__invoke\'])',null,1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// Route::post(\'store\', [' . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller::class, \'__invoke\'])',null,1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// Route::put(\'update/{' . $tableNameWithGuion . ':id}\', [' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller::class, \'__invoke\'])',null,1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('// Route::delete(\'delete/{' . $tableNameWithGuion . ':id}\', [' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller::class, \'__invoke\'])',null,2, 3);
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('Route::get(\'list\', [' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller::class, \'__invoke\'])->middleware(\'abilities:' . $tableNameWithGuionPlural . '\' . EnumAbilitySuffix::LIST);',null,1, 2);
