@@ -94,3 +94,7 @@ Folder structure
 - Repositories
 
 ```
+
+
+
+Nota: Para nueva version, creae una "tag" y volver a subir la version 
