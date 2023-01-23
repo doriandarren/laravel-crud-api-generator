@@ -8,6 +8,10 @@ class GenerateToApiInsideRouteWeb
 {
 
 
+    const FLAG_ROUTE = '->flag_generator';
+
+
+
     /**
      * @param $pathRoute
      * @param $pathResources
@@ -34,20 +38,25 @@ class GenerateToApiInsideRouteWeb
 
     private function createWebRoute($pathRoute)
     {
-
-        //TODO Validar que exista
-
-
         $patWeb =  $pathRoute . '/web.php';
-        $str = PHP_EOL .  PHP_EOL . '// Route By GENERATOR' . PHP_EOL;
-        $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL . PHP_EOL;
-        $str .= 'Route::post(\'/generator/create\', [App\Http\Controllers\Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
-
-
         $fp = fopen($patWeb, "a+");
-        fputs($fp, $str);
-        fclose($fp);
+        $flag = false;
 
+        while (!feof($fp)){
+            $line = fgets($fp);
+            if(strpos($line, self::FLAG_ROUTE) !== false){
+                $flag = true;
+            }
+        }
+
+        if(!$flag){
+            $str = PHP_EOL .  PHP_EOL . '// Route By GENERATOR ' . self::FLAG_ROUTE . PHP_EOL;
+            $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL . PHP_EOL;
+            $str .= 'Route::post(\'/generator/create\', [App\Http\Controllers\Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
+            fputs($fp, $str);
+        }
+
+        fclose($fp);
     }
 
 
