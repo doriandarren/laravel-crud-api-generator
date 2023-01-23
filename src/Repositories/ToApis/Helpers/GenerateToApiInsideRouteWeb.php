@@ -21,9 +21,9 @@ class GenerateToApiInsideRouteWeb
     public function __invoke($pathRoute, $pathResources, $pathController)
     {
 
-        $this->createWebRoute($pathRoute);
-
-        $this->createPageForm($pathResources);
+//        $this->createWebRoute($pathRoute);
+//
+//        $this->createPageForm($pathResources);
 
         $this->createController($pathController);
 
@@ -447,6 +447,8 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1);
 
 
+
+        echo $path;
 
         try {
 
