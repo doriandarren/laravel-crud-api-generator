@@ -147,7 +147,6 @@ class GenerateToApiMigration
         $date = date('Y_m_d_His');
 
 
-
         try {
 
             if(!file_exists($path)){
