@@ -69,7 +69,6 @@ class GenerateToApiInsideRouteWeb
         // Header
         $contents = HelperFiles::formatLineBreakAndTab('<!DOCTYPE html>', null, 1);
 
-
         $contents .= HelperFiles::formatLineBreakAndTab('<html lang="{{ str_replace(\'_\', \'-\', app()->getLocale()) }}">', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<head>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('<meta charset="utf-8">', null, 1, 1);
