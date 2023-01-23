@@ -60,10 +60,11 @@ Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'
 ```sh
 
 For prod:
-composer require infinito/generate-crud-api-laravel
+composer require infinito/laravel-crud-api-generator
 
 For dev:
 composer require infinito/laravel-crud-api-generator:dev-main
+
 
 For remove:
 composer remove infinito/laravel-crud-api-generator
