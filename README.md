@@ -55,6 +55,7 @@ Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'
 ```
 
 
+
 5.- Install package
 
 ```sh
