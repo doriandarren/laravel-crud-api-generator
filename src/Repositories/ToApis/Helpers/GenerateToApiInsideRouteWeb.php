@@ -50,8 +50,8 @@ class GenerateToApiInsideRouteWeb
         }
 
         if(!$flag){
-            $str = PHP_EOL .  PHP_EOL . '// Route By GENERATOR ' . self::FLAG_ROUTE . PHP_EOL;
-            $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL . PHP_EOL;
+            $str = PHP_EOL . '// Route By GENERATOR ' . self::FLAG_ROUTE . PHP_EOL;
+            $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL;
             $str .= 'Route::post(\'/generator/create\', [App\Http\Controllers\Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
             fputs($fp, $str);
         }
