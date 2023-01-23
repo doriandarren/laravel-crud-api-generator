@@ -466,9 +466,12 @@ class GenerateToApiInsideRouteWeb
             fwrite($fh, $contents)or die("Error write file: GeneratorController.php" );
             fclose($fh);
 
+            echo "PASOOOO";
+
             return;
 
         }catch (\Exception $e){
+            echo $e->getMessage();
 
             return;
         }
