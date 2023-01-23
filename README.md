@@ -1,26 +1,26 @@
 # Project CRUD API Laravel
 
-Generate basic folder CRUD structure
 
-```sh
-    composer require infinito/generate-crud-api-laravel
-```
+For new project.  
 
-
-Folder structure
+1.- Excute:
 
 ```sh
 
-- Controller
-
-- Models
-
-- Repositories
-
+php artisan make:controller Dev/TestController
 
 ```
 
-Add inside exception "VerifyCsrfToken.php"
+
+2.- add web.php:
+
+```sh
+
+Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'])->name('test');
+
+```
+
+3.- Add inside exception "VerifyCsrfToken.php"
 
 ```sh
 
@@ -34,8 +34,23 @@ Add inside exception "VerifyCsrfToken.php"
 ```
 
 
+4.- Install
 
-To implement class or method
+```sh
+
+For prod:
+composer require infinito/generate-crud-api-laravel
+
+For dev:
+composer require infinito/laravel-crud-api-generator:dev-main
+
+For remove:
+composer remove infinito/laravel-crud-api-generator
+
+```
+
+
+5.- To implement class or method
 
 ```sh
 
@@ -51,5 +66,18 @@ class ClassTest {
         (new Scripts())->__invoke();
     }
 }
+
+```
+
+
+Folder structure
+
+```sh
+
+- Controller
+
+- Models
+
+- Repositories
 
 ```
