@@ -25,7 +25,7 @@ class GenerateToApiInsideRouteWeb
 
         $this->createPageForm($pathResources);
 
-        $this->createController($pathController);
+        $this->createController($pathController . '/Generator');
 
     }
 
@@ -462,7 +462,7 @@ class GenerateToApiInsideRouteWeb
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/Generator/GeneratorController.php', 'w+') or die("Error open file: GeneratorController.php");
+            $fh = fopen($path . '/GeneratorController.php', 'w+') or die("Error open file: GeneratorController.php");
             fwrite($fh, $contents)or die("Error write file: GeneratorController.php" );
             fclose($fh);
 
