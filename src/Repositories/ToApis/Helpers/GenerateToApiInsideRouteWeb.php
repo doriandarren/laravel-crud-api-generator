@@ -66,10 +66,6 @@ class GenerateToApiInsideRouteWeb
     private function createPageForm($path)
     {
 
-        //TODO validar que exista
-
-
-
         // Header
         $contents = HelperFiles::formatLineBreakAndTab('<!DOCTYPE html>', null, 1);
 
@@ -405,6 +401,7 @@ class GenerateToApiInsideRouteWeb
             return true;
 
         }catch (\Exception $e){
+            echo $e->getMessage();
             return false;
         }
 
@@ -466,8 +463,6 @@ class GenerateToApiInsideRouteWeb
 
 
 
-        echo $path;
-
         try {
 
             if(!file_exists($path)){
@@ -478,13 +473,10 @@ class GenerateToApiInsideRouteWeb
             fwrite($fh, $contents)or die("Error write file: GeneratorController.php" );
             fclose($fh);
 
-            echo "PASOOOO";
-
             return;
 
         }catch (\Exception $e){
             echo $e->getMessage();
-
             return;
         }
 
