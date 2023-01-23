@@ -21,9 +21,9 @@ class GenerateToApiInsideRouteWeb
     public function __invoke($pathRoute, $pathResources, $pathController)
     {
 
-//        $this->createWebRoute($pathRoute);
-//
-//        $this->createPageForm($pathResources);
+        $this->createWebRoute($pathRoute);
+
+        $this->createPageForm($pathResources);
 
         $this->createController($pathController);
 
@@ -35,24 +35,30 @@ class GenerateToApiInsideRouteWeb
     private function createWebRoute($pathRoute)
     {
         $patWeb =  $pathRoute . '/web.php';
-        $fp = fopen($patWeb, "a+");
+        $fpR = fopen($patWeb, "r");
+
         $flag = false;
 
-        while (!feof($fp)){
-            $line = fgets($fp);
+        while (!feof($fpR)){
+            $line = fgets($fpR);
             if(strpos($line, self::FLAG_ROUTE) !== false){
                 $flag = true;
             }
         }
+        fclose($fpR);
+
+
 
         if(!$flag){
+            $fpW = fopen($patWeb, "a+");
             $str = PHP_EOL . PHP_EOL . '// Route By GENERATOR ' . self::FLAG_ROUTE . PHP_EOL;
             $str .= 'Route::get(\'/generator\', function () { '.PHP_EOL.'    return view(\'generator\'); '.PHP_EOL.'});' . PHP_EOL. PHP_EOL;
             $str .= 'Route::post(\'/generator/create\', [App\Http\Controllers\Generator\GeneratorController::class, \'__invoke\'] )->name(\'generator.create\');';
-            fputs($fp, $str);
+            fputs($fpW, $str);
+            fclose($fpW);
         }
 
-        fclose($fp);
+
     }
 
 
