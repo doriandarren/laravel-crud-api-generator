@@ -1,6 +1,8 @@
 {
     "name": "infinito/laravel-crud-api-generator",
     "description": "Crud generator by laravel",
+    "keywords": ["crud", "laravel"],
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Infinito\\LaravelCrudApiGenerator\\": "src/"
@@ -13,9 +15,9 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": ">=8.0"
     },
-    "license": "MIT"
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
