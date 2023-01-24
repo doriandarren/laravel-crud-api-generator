@@ -50,31 +50,30 @@ class GenerateToApiModel
         $contents .= HelperFiles::formatLineBreakAndTab("{",null,2);
         $contents .= HelperFiles::formatLineBreakAndTab('use HasFactory;',null,2,1);
         $contents .= HelperFiles::formatLineBreakAndTab('//use SoftDeletes;',null,2,1);
-        $contents .= HelperFiles::formatLineBreakAndTab("//protected $"."connection = 'api';",null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab("protected $"."connection = 'api';",null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab("protected $"."table = '".$tableNameWithGuionPlural."';",null,2,1);
 
 
         //Relations
-        $contents .= HelperFiles::formatLineBreakAndTab("/***********************",null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab("/***********************",null,2,1);
         $contents .= HelperFiles::formatLineBreakAndTab("* RELATIONS",null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab("***********************/",null,2,1);
         $contents .= HelperFiles::formatLineBreakAndTab("//TODO add relation tables",null,1,1);
 
 
-
         if($relationClass != ''){
 
-            $contents .= HelperFiles::formatLineBreakAndTab("public function " . strtolower($relationClass) . "()",null,1,1);
-            $contents .= HelperFiles::formatLineBreakAndTab("{",null,1,1);
+            $contents .= HelperFiles::formatLineBreakAndTab("//public function " . strtolower($relationClass) . "()",null,1,1);
+            $contents .= HelperFiles::formatLineBreakAndTab("//{",null,1,1);
 
             switch ($relationType){
 
                 case self::HAS_MANY:
-                    $contents .= HelperFiles::formatLineBreakAndTab('return $this->hasMany(' . $relationClass . '::class, \''. strtolower($relationClass) .'_id\', \'id\');',null,1,2);
+                    $contents .= HelperFiles::formatLineBreakAndTab('//return $this->hasMany(' . $relationClass . '::class, \''. strtolower($relationClass) .'_id\', \'id\');',null,1,2);
                     break;
 
                 case self::BELONG_TO:
-                    $contents .= HelperFiles::formatLineBreakAndTab('return $this->belongsTo(' . $relationClass . '::class, \''. strtolower($relationClass) .'_id\', \'id\');',null,1,2);
+                    $contents .= HelperFiles::formatLineBreakAndTab('//return $this->belongsTo(' . $relationClass . '::class, \''. strtolower($relationClass) .'_id\', \'id\');',null,1,2);
 
                     break;
 
@@ -83,12 +82,12 @@ class GenerateToApiModel
 
             }
 
-            $contents .= HelperFiles::formatLineBreakAndTab("}",null,2,1);
+            $contents .= HelperFiles::formatLineBreakAndTab("//}",null,2,1);
 
         }
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab("}",null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab("}",null,2);
 
 
         try {
