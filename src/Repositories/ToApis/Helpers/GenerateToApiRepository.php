@@ -153,6 +153,7 @@ class GenerateToApiRepository
                 $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")', null, 1, 5);
             }
         }
+        
 
         $contents .= HelperFiles::formatLineBreakAndTab('})->where(\'employee_id\', $employee_id)->latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 2);
