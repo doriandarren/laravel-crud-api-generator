@@ -48,7 +48,7 @@ class GenerateToApiRoute
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('Route::group([\'prefix\' => EnumApiSetup::API_VERSION . \''.$tablePlural.'/\'], function () {',null,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('Route::group([\'prefix\' => EnumApiSetup::API_VERSION . \''.$tableNameWithGuionPlural.'/\'], function () {',null,2);
         $contents .= HelperFiles::formatLineBreakAndTab('Route::group([\'middleware\' => \'auth:sanctum\'], function() {',null,2, 1);
 
 
