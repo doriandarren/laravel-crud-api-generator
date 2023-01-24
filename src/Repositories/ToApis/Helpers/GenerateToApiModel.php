@@ -55,7 +55,7 @@ class GenerateToApiModel
 
 
         //Relations
-        $contents .= HelperFiles::formatLineBreakAndTab("/***********************",null,2,1);
+        $contents .= HelperFiles::formatLineBreakAndTab("/***********************",null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab("* RELATIONS",null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab("***********************/",null,2,1);
         $contents .= HelperFiles::formatLineBreakAndTab("//TODO add relation tables",null,1,1);
