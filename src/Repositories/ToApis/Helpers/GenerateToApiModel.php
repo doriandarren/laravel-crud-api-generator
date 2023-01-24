@@ -45,8 +45,6 @@ class GenerateToApiModel
         //End Header
 
 
-
-
         //Begin Class
         $contents .= HelperFiles::formatLineBreakAndTab("class ". $classNameSingularUp ." extends Model",null,1);
         $contents .= HelperFiles::formatLineBreakAndTab("{",null,2);
