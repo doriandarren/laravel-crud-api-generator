@@ -60,11 +60,6 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @header Bearer BEARER_AUTH ',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('*',null,1,1);
-
-        foreach ($columns as $col){
-            $contents .= HelperFiles::formatLineBreakAndTab('* @bodyParam ' . $col->name . ' string required',null,1,1);
-        }
-
         $contents .= HelperFiles::formatLineBreakAndTab('*',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @param Request $request',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @param ' . $classNameSingularUp . ' $' . $tableSingular,null,1,1);
