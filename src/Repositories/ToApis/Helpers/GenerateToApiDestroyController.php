@@ -55,6 +55,7 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('$this->repository = new ' . ucfirst($tableSingular) .'Repository();',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
 
+        
 
         // Destroy
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1,1);
