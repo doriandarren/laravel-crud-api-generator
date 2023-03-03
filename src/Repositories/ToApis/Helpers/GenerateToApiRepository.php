@@ -245,6 +245,7 @@ class GenerateToApiRepository
             $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.'New->'.$col->name.' = $attribute->'.$col->name.';',null,1,2);
         }
 
+        $contents .= HelperFiles::formatLineBreakAndTab("$" . $tableSingular . "New->save();",null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab("return $" . $tableSingular . "New;",null,2,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
