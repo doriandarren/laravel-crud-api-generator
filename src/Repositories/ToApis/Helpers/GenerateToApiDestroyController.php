@@ -55,7 +55,6 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('$this->repository = new ' . ucfirst($tableSingular) .'Repository();',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
 
-        
 
         // Destroy
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1,1);
@@ -67,19 +66,19 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('* @return JsonResponse',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function __invoke(Request $request, '.ucfirst($classNameSingularUp).' $'.$tableSingular.'): JsonResponse',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($this->isAdmin(auth()->user()->roles)){',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.'Owner = $this->repository->show' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->id, $'.$tableSingular.'->id);',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($'.$tableSingular.'Owner){',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error delete\', [\'e\' => trans(\'validation.role_not_allowed\')]);',null,1,4);
-        $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' deleted\', $data);',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('{',null,2,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($this->isAdmin(auth()->user()->roles)){',null,2,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' deleted\', $data);',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($' . $tableSingular . '->employee_id == auth()->user()->employee->id){',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,2,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' deleted\', $data);',null,2,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error delete\', [\'e\' => trans(\'validation.role_not_allowed\')]);',null,2,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
 
 
 
