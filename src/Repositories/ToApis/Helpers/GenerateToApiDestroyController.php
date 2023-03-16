@@ -28,7 +28,6 @@ class GenerateToApiDestroyController
                              $relationType, $path): bool
     {
 
-
         // Header
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
