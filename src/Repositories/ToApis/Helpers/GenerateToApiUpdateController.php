@@ -43,24 +43,16 @@ class GenerateToApiUpdateController
         $contents .= HelperFiles::formatLineBreakAndTab('use App\Repositories\\' . $classNamePluralUp . '\\' . $classNameSingularUp . 'Repository;', null, 2);
 
 
-
         //Begin Class
         $contents .= HelperFiles::formatLineBreakAndTab('class '. $classNameSingularUp . EnumFolderToApi::UPDATE. 'Controller extends Controller',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,2);
 
-
-
-
-
         $contents .= HelperFiles::formatLineBreakAndTab('private $repository;',null,1,1);
-
 
         $contents .= HelperFiles::formatLineBreakAndTab('public function __construct()',2,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('$this->repository = new ' . ucfirst($tableSingular) .'Repository();',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
-
-
 
 
         //Update
@@ -78,23 +70,36 @@ class GenerateToApiUpdateController
         $contents .= HelperFiles::formatLineBreakAndTab('* @return JsonResponse',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function __invoke(Request $request, '.ucfirst($classNameSingularUp).' $'.$tableSingular.'): JsonResponse',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('$validator = Validator::make($request->all(), [',null,1,2);
-        foreach ($columns as $col){
-            $contents .= HelperFiles::formatLineBreakAndTab('\''.$col->name.'\'=>\'required\',',null,1,3);
-        }
-        $contents .= HelperFiles::formatLineBreakAndTab(']);',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($validator->fails()){',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error\', $validator->errors());',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('{',null,2,1);
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('if($this->isAdmin(auth()->user()->roles)){',null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('// By Admin',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$validator = Validator::make($request->all(), [',null,1,3);
+        foreach ($columns as $col){
+            $contents .= HelperFiles::formatLineBreakAndTab('\''.$col->name.'\'=>\'required\',',null,1,4);
+        }
+        $contents .= HelperFiles::formatLineBreakAndTab(']);',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($validator->fails()){',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error\', $validator->errors());',null,1,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->update($'.$tableSingular.'->id, $request->all());',null,1,3);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' updated\', $data);',null,2,3);
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//$'.$tableSingular.'Owner = $this->repository->show' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->employee->id, $'.$tableSingular.'->id);',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('// $'.$tableSingular.'Owner = $this->repository->show' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->id, $'.$tableSingular.'->id);',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('//if($'.$tableSingular.'Owner){',null,2,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($' . $tableSingular . '->employee_id == auth()->user()->employee->id){',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('// By Role User',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$validator = Validator::make($request->all(), [',null,1,3);
+        foreach ($columns as $col){
+            $contents .= HelperFiles::formatLineBreakAndTab('\''.$col->name.'\'=>\'required\',',null,1,4);
+        }
+        $contents .= HelperFiles::formatLineBreakAndTab(']);',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($validator->fails()){',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error\', $validator->errors());',null,1,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,3);
+        //$contents .= HelperFiles::formatLineBreakAndTab('//$'.$tableSingular.'Owner = $this->repository->show' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->employee->id, $'.$tableSingular.'->id);',null,1,3);
+        //$contents .= HelperFiles::formatLineBreakAndTab('//if($'.$tableSingular.'Owner){',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($' . $tableSingular . '->company_id == auth()->user()->employee->company_id){',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->update($'.$tableSingular.'->id, $request->all());',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' updated\', $data);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,3);
@@ -104,10 +109,9 @@ class GenerateToApiUpdateController
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
 
 
-
-
         //End Class
         $contents .= HelperFiles::formatLineBreakAndTab('}');
+
 
 
         try {

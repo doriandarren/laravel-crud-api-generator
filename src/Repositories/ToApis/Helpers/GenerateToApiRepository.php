@@ -226,32 +226,6 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
-
-        /**
-         * Store By User
-         */
-        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_ROLE, null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $attribute', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @return ' . $classNameSingularUp, null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function store' . EnumFolderToApi::AUTH_BY_USER . '($'. EnumFolderToApi::USE_TO_ROLE.', $attribute): '. $classNameSingularUp, null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab("$".$tableSingular."New = new ". $classNameSingularUp ."();",null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// TODO --->>> refactor to $' . EnumFolderToApi::USE_TO_ROLE,null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('// $'.$tableSingular.'New->' . EnumFolderToApi::USE_TO_ROLE.' = $' . EnumFolderToApi::USE_TO_ROLE . ';',null,1,2);
-
-        foreach($columns as $col){
-            $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.'New->'.$col->name.' = $attribute->'.$col->name.';',null,1,2);
-        }
-
-        $contents .= HelperFiles::formatLineBreakAndTab("$" . $tableSingular . "New->save();",null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab("return $" . $tableSingular . "New;",null,2,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
-
-
-
-
         /**
          * Update
          */
