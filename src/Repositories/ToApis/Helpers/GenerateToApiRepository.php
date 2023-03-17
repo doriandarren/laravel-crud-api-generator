@@ -45,8 +45,8 @@ class GenerateToApiRepository
          */
         $contents .= HelperFiles::formatLineBreakAndTab("<?php", null, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Repositories\\' . $classNamePluralUp . ';', null, 2);
-        //$contents .= HelperFiles::formatLineBreakAndTab('use App\Enums\EnumSettingPaginate;', null, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\'.$classNamePluralUp .'\\' . $classNameSingularUp . ';', null, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumSettingPaginate;', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Models\\'.$classNamePluralUp .'\\' . $classNameSingularUp . ';', null, 3);
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('class '. $classNameSingularUp .'Repository', null, 1);
