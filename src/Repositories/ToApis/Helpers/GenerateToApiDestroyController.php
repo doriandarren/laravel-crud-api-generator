@@ -70,7 +70,7 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' deleted\', $data);',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($' . $tableSingular . '->employee_id == auth()->user()->employee->id){',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($' . $tableSingular . '->company_id == auth()->user()->employee->company_id){',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' deleted\', $data);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,3);
