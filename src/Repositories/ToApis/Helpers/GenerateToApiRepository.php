@@ -79,8 +79,8 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_MANAGER . '($'.EnumFolderToApi::USE_TO_COMPANY.'): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 9);
-        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -99,9 +99,9 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_COMPANY . ', ' . '$'.EnumFolderToApi::USE_TO_ROLE.'): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $' . EnumFolderToApi::USE_TO_ROLE . ')', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 9);
-        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 9);
-        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -194,7 +194,7 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function show($id): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::find($id);', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)->first();', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -210,8 +210,8 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_MANAGER . '($'.EnumFolderToApi::USE_TO_COMPANY.', $id): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $'.EnumFolderToApi::USE_TO_COMPANY.')', null, 1, 9);
-        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $'.EnumFolderToApi::USE_TO_COMPANY.')', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
