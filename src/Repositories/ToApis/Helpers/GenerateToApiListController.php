@@ -69,13 +69,13 @@ class GenerateToApiListController
         $contents .= HelperFiles::formatLineBreakAndTab('if($this->isAdmin(auth()->user()->roles)){',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->list();',null,1,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}elseif($this->isManager(auth()->user()->roles)){',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->listByManager(auth()->user()->employee->company_id);',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->list' . EnumFolderToApi::AUTH_BY_MANAGER . '(auth()->user()->employee->company_id);',null,1,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->list' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->employee->id);',null,1,3);
-        //$contents .= HelperFiles::formatLineBreakAndTab('// $data = $this->repository->list' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->id);',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->list' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->employee->company_id, auth()->user()->employee->id);',null,1,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNamePluralUp . ' list\', $data);',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
+
 
 
         //End Class
