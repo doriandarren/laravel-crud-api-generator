@@ -21,7 +21,6 @@ class GenerateToApiRepository
     public function __invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType, $path): bool
     {
 
-
         $classNameSingularUp = ucwords($tableSingular);
         $classNamePluralUp = ucwords($tablePlural);
         $contents = '';
@@ -49,6 +48,7 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Models\\'.$classNamePluralUp .'\\' . $classNameSingularUp . ';', null, 3);
 
 
+
         $contents .= HelperFiles::formatLineBreakAndTab('class '. $classNameSingularUp .'Repository', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 2);
 
@@ -57,6 +57,7 @@ class GenerateToApiRepository
          * List
          */
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* By Admin', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function list(): mixed', null, 1, 1);
@@ -65,20 +66,42 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
+
+
         /**
          * List By User
          */
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* By Manager', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_MANAGER . '($'.EnumFolderToApi::USE_TO_COMPANY.'): mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
+
+
+
+
+        /**
+         * List By User
+         */
+        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* By User', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_ROLE, null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_ROLE.'): mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_COMPANY . ', ' . '$'.EnumFolderToApi::USE_TO_ROLE.'): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('// TODO By User', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//$q = '. $classNameSingularUp .'::where(\'id\', $' . EnumFolderToApi::USE_TO_ROLE . ')->first();', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//return $q?->companies;', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//return [];', null, 2, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $' . EnumFolderToApi::USE_TO_ROLE . ')->latest()->get();', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $' . EnumFolderToApi::USE_TO_ROLE . ')', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 9);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -87,38 +110,38 @@ class GenerateToApiRepository
         /**
          * Paginate
          */
-        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $filter', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function listPaginate($filter = null): mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($filter){', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::when($filter, function ($q) use ($filter) {', null, 1, 3);
-
-        for($i=0; $i<count($columns); $i++){
-            if($i == 0){
-
-                $q = '$q->where(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")';
-
-                if(count($columns) == 1){
-                    $q .= ';';
-                }
-
-                $contents .= HelperFiles::formatLineBreakAndTab($q, null, 1, 4);
-
-            }else if((count($columns) -1 ) == $i){
-                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%");', null, 1, 5);
-            }else{
-                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")', null, 1, 5);
-            }
-        }
-
-        $contents .= HelperFiles::formatLineBreakAndTab('})->latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @param $filter', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('public function listPaginate($filter = null): mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('if($filter){', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::when($filter, function ($q) use ($filter) {', null, 1, 3);
+//
+//        for($i=0; $i<count($columns); $i++){
+//            if($i == 0){
+//
+//                $q = '$q->where(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")';
+//
+//                if(count($columns) == 1){
+//                    $q .= ';';
+//                }
+//
+//                $contents .= HelperFiles::formatLineBreakAndTab($q, null, 1, 4);
+//
+//            }else if((count($columns) -1 ) == $i){
+//                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%");', null, 1, 5);
+//            }else{
+//                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")', null, 1, 5);
+//            }
+//        }
+//
+//        $contents .= HelperFiles::formatLineBreakAndTab('})->latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
 
@@ -126,43 +149,39 @@ class GenerateToApiRepository
         /**
          * Paginate by User
          */
-        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_ROLE, null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $filter', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function listPaginate' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_ROLE.', $filter = null): mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('if($filter){', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::when($filter, function ($q) use ($filter) {', null, 1, 3);
-
-        for($i=0; $i<count($columns); $i++){
-            if($i == 0){
-
-                $q = '$q->where(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")';
-
-                if(count($columns) == 1){
-                    $q .= ';';
-                }
-
-                $contents .= HelperFiles::formatLineBreakAndTab($q, null, 1, 4);
-
-            }else if((count($columns) -1 ) == $i){
-                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%");', null, 1, 5);
-            }else{
-                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")', null, 1, 5);
-            }
-        }
-
-
-
-        $contents .= HelperFiles::formatLineBreakAndTab('})->where(\'employee_id\', $employee_id)->latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $'.EnumFolderToApi::USE_TO_ROLE.')', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 7);
-        $contents .= HelperFiles::formatLineBreakAndTab('->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 7);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_ROLE, null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @param $filter', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('public function listPaginate' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_ROLE.', $filter = null): mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('if($filter){', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::when($filter, function ($q) use ($filter) {', null, 1, 3);
+//
+//        for($i=0; $i<count($columns); $i++){
+//            if($i == 0){
+//                $q = '$q->where(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")';
+//
+//                if(count($columns) == 1){
+//                    $q .= ';';
+//                }
+//
+//                $contents .= HelperFiles::formatLineBreakAndTab($q, null, 1, 4);
+//            }else if((count($columns) -1 ) == $i){
+//                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%");', null, 1, 5);
+//            }else{
+//                $contents .= HelperFiles::formatLineBreakAndTab('->orWhere(\''.$columns[$i]->name.'\', \'like\', "%{$filter}%")', null, 1, 5);
+//            }
+//        }
+//
+//        $contents .= HelperFiles::formatLineBreakAndTab('})->where(\'employee_id\', $employee_id)->latest()->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 3);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $'.EnumFolderToApi::USE_TO_ROLE.')', null, 1, 3);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 7);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->paginate(EnumSettingPaginate::PER_PAGE);', null, 1, 7);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
 
@@ -181,6 +200,24 @@ class GenerateToApiRepository
 
 
         /**
+         * Show By Manager
+         */
+        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' .EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $id', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_MANAGER . '($'.EnumFolderToApi::USE_TO_COMPANY.', $id): mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $'.EnumFolderToApi::USE_TO_COMPANY.')', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
+
+
+
+        /**
          * Show By User
          */
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
@@ -190,18 +227,11 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_ROLE.', $id): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $'.EnumFolderToApi::USE_TO_ROLE.')', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 2);
-
-        $contents .= HelperFiles::formatLineBreakAndTab('// TODO logic here', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//$q = '. $classNameSingularUp .'::with([\'company\'])', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//->where(\'company_id\', $id)', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//->where(\'user_id\', $user_id)', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//->first();', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('//return $q?->company;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
 
 
 
@@ -224,6 +254,7 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab("$" . $tableSingular . "New->save();",null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab("return $" . $tableSingular . "New;",null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
 
 
         /**
@@ -286,8 +317,6 @@ class GenerateToApiRepository
         }
         $contents .= HelperFiles::formatLineBreakAndTab(' * @return '.$classNameSingularUp,null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab(' */',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function set'.$classNameSingularUp.'(',null,null,1);
-
 
         $str = '';
         for($i=0; $i<count($columns); $i++){
@@ -299,7 +328,7 @@ class GenerateToApiRepository
             }
         }
 
-        $contents .= HelperFiles::formatLineBreakAndTab(trim($str) . '): '.$classNameSingularUp,null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function set'.$classNameSingularUp.'(' . trim($str) . '): '.$classNameSingularUp,null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.' = new '.$classNameSingularUp.'();',null,1,2);
 
@@ -316,6 +345,7 @@ class GenerateToApiRepository
          * End Class
          */
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1);
+
 
 
 
@@ -337,23 +367,6 @@ class GenerateToApiRepository
 
 
 
-
-
-
-
-        /**
-         * Save File
-         */
-//        $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
-//        Storage::makeDirectory(EnumFolderMain::PATH_STORAGE . '/' . EnumFolderToApi::PATH_STORAGE . '/' .  $classNamePluralUp . '/' . EnumFolderToApi::PATH_FOLDER_REPOSITORY);
-//
-//        File::put($storagePath . EnumFolderMain::PATH_STORAGE. '/' . EnumFolderToApi::PATH_STORAGE  . '/' .  $classNamePluralUp . '/' . EnumFolderToApi::PATH_FOLDER_REPOSITORY .  '/'. $classNameSingularUp .'Repository.php', $contents);
-//
-//        return true;
-
     }
-
-
-
 
 }

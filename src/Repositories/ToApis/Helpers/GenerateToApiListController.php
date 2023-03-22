@@ -28,7 +28,6 @@ class GenerateToApiListController
                              $relationType, $path): bool
     {
 
-
         // Header
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
@@ -69,9 +68,11 @@ class GenerateToApiListController
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('if($this->isAdmin(auth()->user()->roles)){',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->list();',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('}elseif($this->isManager(auth()->user()->roles)){',null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->listByManager(auth()->user()->employee->company_id);',null,1,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->list' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->employee->id);',null,1,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('// $data = $this->repository->list' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->id);',null,1,3);
+        //$contents .= HelperFiles::formatLineBreakAndTab('// $data = $this->repository->list' . EnumFolderToApi::AUTH_BY_USER . '(auth()->user()->id);',null,1,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNamePluralUp . ' list\', $data);',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);

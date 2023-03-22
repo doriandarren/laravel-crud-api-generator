@@ -27,11 +27,12 @@ abstract class EnumFolderToApi
     const DESTROY = 'Destroy';
 
 
-
+    const AUTH_BY_MANAGER = 'ByRoleManager';
     const AUTH_BY_USER = 'ByRoleUser';
 
 
     const USE_TO_ROLE = 'employee_id';
+    const USE_TO_COMPANY = 'company_id';
 
 
     const USE_CASE_ID = '_id';
