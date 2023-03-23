@@ -44,7 +44,7 @@ class GenerateToApiRepository
          */
         $contents .= HelperFiles::formatLineBreakAndTab("<?php", null, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Repositories\\' . $classNamePluralUp . ';', null, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumSettingPaginate;', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumApiSetup;', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Models\\'.$classNamePluralUp .'\\' . $classNameSingularUp . ';', null, 3);
 
 
@@ -62,7 +62,9 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('public function list(): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::latest()->get();', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::latest()', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -80,6 +82,7 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
@@ -101,6 +104,7 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $' . EnumFolderToApi::USE_TO_ROLE . ')', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
@@ -345,7 +349,6 @@ class GenerateToApiRepository
          * End Class
          */
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1);
-
 
 
 
