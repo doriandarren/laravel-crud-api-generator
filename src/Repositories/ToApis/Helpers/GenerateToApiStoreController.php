@@ -101,6 +101,31 @@ class GenerateToApiStoreController
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' created\', $data);',null,2,3);
 
 
+        $contents .= HelperFiles::formatLineBreakAndTab('}else if($this->isManager(auth()->user()->roles)){',null,2,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('// By Manager',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$validator = Validator::make($request->all(), [',null,1,3);
+        foreach ($columns as $col){
+            $contents .= HelperFiles::formatLineBreakAndTab('\''.$col->name.'\'=>\'required\',',null,1,4);
+        }
+        $contents .= HelperFiles::formatLineBreakAndTab(']);',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('if($validator->fails()){',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error\', $validator->errors());',null,1,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.' = $this->repository->set'.$classNameSingularUp.'(',null,null,3);
+        for($i=0; $i<count($columns); $i++){
+            if((count($columns) -1 ) == $i){
+                // The end
+                $contents .= '$request->'.$columns[$i]->name;
+            }else{
+                $contents .= '$request->'.$columns[$i]->name.', ';
+            }
+        }
+        $contents .= HelperFiles::formatLineBreakAndTab(');',null,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->store($'.$tableSingular.');',null,2,3);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' created\', $data);',null,2,3);
+
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,2);
         $contents .= HelperFiles::formatLineBreakAndTab('// By Role User',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('$validator = Validator::make($request->all(), [',null,1,3);
@@ -130,6 +155,7 @@ class GenerateToApiStoreController
 
         //End Class
         $contents .= HelperFiles::formatLineBreakAndTab('}');
+
 
 
 
