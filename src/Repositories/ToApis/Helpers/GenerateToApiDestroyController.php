@@ -74,7 +74,7 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->destroy($'.$tableSingular.'->id);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' deleted\', $data);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error delete\', [\'e\' => trans(\'validation.role_not_allowed\')]);',null,2,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error delete\', [[\'e\' => trans(\'validation.role_not_allowed\')]]);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);

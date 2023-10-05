@@ -111,3 +111,14 @@ Folder structure
 
 
 Nota: Para nueva version, creae una "tag" y volver a subir la version 
+
+```sh
+
+git tag -d 1.0.
+
+Para agregar por el PhpStorm.
+
+Borrar dl github el tag.
+
+```
+

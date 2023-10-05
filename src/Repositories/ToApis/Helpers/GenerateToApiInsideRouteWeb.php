@@ -105,8 +105,6 @@ class GenerateToApiInsideRouteWeb
 
 
 
-
-
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="pt-4 pb-2">', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('<button', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('class="px-3 py-3 bg-blue-600 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"', null, 1, 5);
@@ -118,8 +116,26 @@ class GenerateToApiInsideRouteWeb
 
 
 
-        // Block
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="grid grid-cols-3 gap-4 mt-10">', null, 1, 3);
+
+
+
+
+
+        //TODO hacer aqui lo nuevo: _ck
+        // Block
+
+
+
+
+
+
+
+
+
+        // Block
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="form-group mb-6">', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="template_type">', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('Plantilla', null, 1, 6);
