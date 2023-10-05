@@ -2,6 +2,14 @@
 
 For new project.  
 
+
+
+## URL Package List:
+
+- **[laravel-crud-api-generator](https://packagist.org/packages/infinito/laravel-crud-api-generator)**
+
+
+
 1.- Install package:
 
 ```sh
