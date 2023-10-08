@@ -164,9 +164,6 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
 
 
-
-
-
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
         $contents .= HelperFiles::formatLineBreakAndTab('<label for="update_ck">Update</label>', null, 1, 9);
         $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="update_ck" id="update_ck" checked>', null, 1, 9);
