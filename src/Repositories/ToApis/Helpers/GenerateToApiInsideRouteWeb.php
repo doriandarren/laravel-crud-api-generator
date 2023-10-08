@@ -640,8 +640,7 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('$templateType = $request->template_type;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$nameSpace = $request->name_space;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$columns = json_decode(json_encode($request->columns));', null, 2, 2);
-
-
+        
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('// checkboxes', null, 1, 2);
@@ -657,7 +656,6 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('$seeder_ck = $request->input(\'seeder_ck\') == \'true\';', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$factory_ck = $request->input(\'factory_ck\') == \'true\';', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$testunit_ck = $request->input(\'testunit_ck\') == \'true\';', null, 2, 2);
-
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('try {', null, 1, 2);
