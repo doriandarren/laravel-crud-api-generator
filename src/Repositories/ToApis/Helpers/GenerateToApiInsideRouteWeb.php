@@ -119,20 +119,136 @@ class GenerateToApiInsideRouteWeb
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="grid grid-cols-3 gap-4 mt-10">', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="col-span-3">', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('Tipo', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('</label>', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
 
 
 
 
 
-        //TODO hacer aqui lo nuevo: _ck
-        // Block
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="col-span-3">', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div>', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="all_ck">Todos</label>', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="all_ck" id="all_ck" checked>', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="col-span-3">', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="grid grid-cols-3">', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="col-span-1">', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="flex flex-col">', null, 1, 7);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="list_ck">List</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="list_ck" id="list_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="show_ck">Show</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="show_ck" id="show_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="store_ck">Store</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="store_ck" id="store_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="update_ck">Update</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="update_ck" id="update_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="destroy_ck">Destroy</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="destroy_ck" id="destroy_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 7);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 6);
+
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="col-span-1">', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="flex flex-col">', null, 1, 7);
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="model_ck">Model</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="model_ck" id="model_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="repository_ck">Repository</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="repository_ck" id="repository_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="route_ck">Route</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="route_ck" id="route_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 7);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 6);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="col-span-1">', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="flex flex-col">', null, 1, 7);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="migration_ck">Migration</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="migration_ck" id="migration_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="seeder_ck">Seeder</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="seeder_ck" id="seeder_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="factory_ck">Factory</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="factory_ck" id="factory_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="mb-3">', null, 1, 8);
+        $contents .= HelperFiles::formatLineBreakAndTab('<label for="migration_ck">TestUnit</label>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('<input type="checkbox" name="testunit_ck" id="testunit_ck" checked>', null, 1, 9);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 8);
+
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 7);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 6);
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 3);
 
 
 
 
 
 
-
+        $contents .= HelperFiles::formatLineBreakAndTab('<div class="grid grid-cols-3 gap-4 mt-10">', null, 1, 3);
 
 
         // Block
@@ -301,7 +417,24 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('let relation_type_id = document.getElementById("relation_type_id");', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('let relation_class_id = document.getElementById("relation_class_id");', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('let name_space = document.getElementById("name_space");', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('let template_type = document.getElementById("template_type");', null, 3, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let template_type = document.getElementById("template_type");', null, 2, 2);
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('//Checkbox', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let all_ck = document.querySelector("#all_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let list_ck = document.querySelector("#list_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let show_ck = document.querySelector("#show_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let store_ck = document.querySelector("#store_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let update_ck = document.querySelector("#update_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let destroy_ck = document.querySelector("#destroy_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let model_ck = document.querySelector("#model_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let repository_ck = document.querySelector("#repository_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let route_ck = document.querySelector("#route_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let migration_ck = document.querySelector("#migration_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let seeder_ck = document.querySelector("#seeder_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let factory_ck = document.querySelector("#factory_ck");', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('let testunit_ck = document.querySelector("#testunit_ck");', null, 3, 3);
 
 
 
@@ -382,16 +515,49 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('showConfirmButton: false,', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('timer: 1500', null, 1, 4);
         $contents .= HelperFiles::formatLineBreakAndTab('})', null, 1, 3);
-
-
-
-
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+
+
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('function checkAll() {', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('if(all_ck.checked){', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('list_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('show_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('store_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('update_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('destroy_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('model_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('repository_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('route_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('migration_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('seeder_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('factory_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('testunit_ck.checked = true;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('list_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('show_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('store_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('update_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('destroy_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('model_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('repository_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('route_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('migration_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('seeder_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('factory_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('testunit_ck.checked = false;', null, 1, 4);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
+
+
 
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('document.querySelector("#save").addEventListener(\'click\', readForm);', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('document.querySelector("#btn_format").addEventListener(\'click\', formatColumns);', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('all_ck.addEventListener(\'click\', checkAll);', null, 1, 2);
 
 
         // End Script

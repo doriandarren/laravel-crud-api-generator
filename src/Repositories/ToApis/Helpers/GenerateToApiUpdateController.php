@@ -103,7 +103,7 @@ class GenerateToApiUpdateController
         $contents .= HelperFiles::formatLineBreakAndTab('$data = $this->repository->update($'.$tableSingular.'->id, $request->all());',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithData(\'' . $classNameSingularUp . ' updated\', $data);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{',null,2,3);
-        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error updated\', [[\'e\' => trans(\'validation.role_not_allowed\')]]);',null,2,4);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $this->respondWithError(\'Error updated\', [[\'e\' => trans(\'validation.user_not_belong_company\')]]);',null,2,4);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,3);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
