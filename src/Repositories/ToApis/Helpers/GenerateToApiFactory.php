@@ -62,7 +62,7 @@ class GenerateToApiFactory
 
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1);
 
-        
+
 
         try {
 

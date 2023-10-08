@@ -644,9 +644,19 @@ class GenerateToApiInsideRouteWeb
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('', null, 2, 2);
-
-
+        $contents .= HelperFiles::formatLineBreakAndTab('// checkboxes', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$list_ck = $request->input(\'list_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$show_ck = $request->input(\'show_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$store_ck = $request->input(\'store_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$update_ck = $request->input(\'update_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$destroy_ck = $request->input(\'destroy_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$model_ck = $request->input(\'model_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$repository_ck = $request->input(\'repository_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$route_ck = $request->input(\'route_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$migration_ck = $request->input(\'migration_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$seeder_ck = $request->input(\'seeder_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$factory_ck = $request->input(\'factory_ck\') == \'true\';', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$testunit_ck = $request->input(\'testunit_ck\') == \'true\';', null, 2, 2);
 
 
 
