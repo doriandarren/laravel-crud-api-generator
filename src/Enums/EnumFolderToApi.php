@@ -27,6 +27,11 @@ abstract class EnumFolderToApi
     const DESTROY = 'Destroy';
 
 
+    const SEEDER = 'Seeder';
+
+    const FACTORY = 'Factory';
+
+
     const AUTH_BY_MANAGER = 'ByRoleManager';
     const AUTH_BY_USER = 'ByRoleUser';
 

@@ -418,20 +418,20 @@ class GenerateToApiInsideRouteWeb
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('//Checkbox', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let all_ck = document.querySelector("#all_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let list_ck = document.querySelector("#list_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let show_ck = document.querySelector("#show_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let store_ck = document.querySelector("#store_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let update_ck = document.querySelector("#update_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let destroy_ck = document.querySelector("#destroy_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let model_ck = document.querySelector("#model_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let repository_ck = document.querySelector("#repository_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let route_ck = document.querySelector("#route_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let migration_ck = document.querySelector("#migration_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let seeder_ck = document.querySelector("#seeder_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let factory_ck = document.querySelector("#factory_ck");', null, 1, 3);
-        $contents .= HelperFiles::formatLineBreakAndTab('let testunit_ck = document.querySelector("#testunit_ck");', null, 3, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('//Checkbox', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let all_ck = document.querySelector("#all_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let list_ck = document.querySelector("#list_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let show_ck = document.querySelector("#show_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let store_ck = document.querySelector("#store_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let update_ck = document.querySelector("#update_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let destroy_ck = document.querySelector("#destroy_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let model_ck = document.querySelector("#model_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let repository_ck = document.querySelector("#repository_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let route_ck = document.querySelector("#route_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let migration_ck = document.querySelector("#migration_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let seeder_ck = document.querySelector("#seeder_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let factory_ck = document.querySelector("#factory_ck");', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('let testunit_ck = document.querySelector("#testunit_ck");', null, 3, 2);
 
 
 
@@ -485,6 +485,18 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('data.relation_type = relation_type_id.value;', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('data.name_space = name_space.value;', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('data.template_type = template_type.options[template_type.selectedIndex].value;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.list_ck = list_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.show_ck = show_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.store_ck = store_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.update_ck = update_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.destroy_ck = destroy_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.model_ck = model_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.repository_ck = repository_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.route_ck = route_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.migration_ck = migration_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.seeder_ck = seeder_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.factory_ck = factory_ck.checked;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('data.testunit_ck = testunit_ck.checked;', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('let column_name_group = document.getElementsByClassName("column_name_group");', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('let column_type_group = document.getElementsByClassName("column_type_group");', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('let arr = [];', null, 1, 3);
@@ -629,8 +641,17 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('$nameSpace = $request->name_space;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$columns = json_decode(json_encode($request->columns));', null, 2, 2);
 
+
+
+
+        $contents .= HelperFiles::formatLineBreakAndTab('', null, 2, 2);
+
+
+
+
+
         $contents .= HelperFiles::formatLineBreakAndTab('try {', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('(new Generator())->__invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace, $templateType);', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('(new Generator())->__invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace, $templateType, $list_ck, $show_ck, $store_ck, $update_ck, $destroy_ck, $model_ck, $repository_ck, $route_ck, $migration_ck, $seeder_ck, $factory_ck, $testunit_ck);', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('} catch (\\Exception $e) {', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('return response()->json($e->getMessage());', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 2);

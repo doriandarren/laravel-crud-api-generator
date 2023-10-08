@@ -3,6 +3,7 @@
 namespace Infinito\LaravelCrudApiGenerator\Repositories\ToApis;
 
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiDestroyController;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiFactory;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiListPaginateController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiMigration;
@@ -11,6 +12,7 @@ use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiPo
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiRepository;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiRoute;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiScript;
+use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiSeeder;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiShowController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiStoreController;
 use Infinito\LaravelCrudApiGenerator\Repositories\ToApis\Helpers\GenerateToApiUpdateController;
@@ -19,7 +21,9 @@ class ToApiRepository
 {
 
 
-    public function __invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace, $templateType)
+    public function __invoke($tableSingular, $tablePlural, $columns, $relationClass, $relationType, $nameSpace,
+                             $templateType, $list_ck, $show_ck, $store_ck, $update_ck, $destroy_ck, $model_ck,
+                             $repository_ck, $route_ck, $migration_ck, $seeder_ck, $factory_ck, $testunit_ck)
     {
 
 
@@ -67,6 +71,8 @@ class ToApiRepository
         $pathRoute = $dir . "/" . "routes";
         $pathMigration = $dir . "/" . "database/migrations";
         $pathScript = $dir . "/" . "public/SCRIPT_GENERATOR";
+        $pathSeeder = $dir . "/" . "database/seeders";
+        $pathFactory = $dir . "/" . "database/factories";
 
 
 
@@ -79,13 +85,16 @@ class ToApiRepository
          **************/
 
         // List
-        $fileBackEnd = new GenerateToApiListController();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
-        if($okBackEnd){
-            $response = "<br> Ready module API List <br>";
+        if($list_ck){
+            $fileBackEnd = new GenerateToApiListController();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
+            if($okBackEnd){
+                $response = "<br> Ready module API List <br>";
+            }
         }
+
 
 
         // List Paginate
@@ -100,46 +109,58 @@ class ToApiRepository
 
 
         // Show
-        $fileBackEnd = new GenerateToApiShowController();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
-        if($okBackEnd){
-            $response .= "Ready module API Show <br>";
+        if($show_ck){
+            $fileBackEnd = new GenerateToApiShowController();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
+            if($okBackEnd){
+                $response .= "Ready module API Show <br>";
+            }
         }
+
 
 
 
 
         // Store
-        $fileBackEnd = new GenerateToApiStoreController();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
-        if($okBackEnd){
-            $response .= "Ready module API Store <br>";
+        if($store_ck){
+            $fileBackEnd = new GenerateToApiStoreController();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
+            if($okBackEnd){
+                $response .= "Ready module API Store <br>";
+            }
         }
+
 
 
         // Update
-        $fileBackEnd = new GenerateToApiUpdateController();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
-        if($okBackEnd){
-            $response .= "Ready module API Update <br>";
+        if($update_ck){
+            $fileBackEnd = new GenerateToApiUpdateController();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
+            if($okBackEnd){
+                $response .= "Ready module API Update <br>";
+            }
         }
+
 
 
 
         // Destroy
-        $fileBackEnd = new GenerateToApiDestroyController();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
-        if($okBackEnd){
-            $response .= "Ready module API Destroy <br>";
+        if($destroy_ck){
+            $fileBackEnd = new GenerateToApiDestroyController();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathController);
+            if($okBackEnd){
+                $response .= "Ready module API Destroy <br>";
+            }
         }
+
 
 
 
@@ -148,13 +169,16 @@ class ToApiRepository
          * MODEL
          ****************/
 
-        $fileModel = new GenerateToApiModel();
-        $okRepository = $fileModel->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathModel);
-        if($okRepository){
-            $response .= "Ready module Model <br>";
+        if($model_ck){
+            $fileModel = new GenerateToApiModel();
+            $okRepository = $fileModel->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathModel);
+            if($okRepository){
+                $response .= "Ready module Model <br>";
+            }
         }
+
 
 
 
@@ -163,10 +187,12 @@ class ToApiRepository
         /****************
          * REPOSITORY
          ****************/
-        $fileRepository = new GenerateToApiRepository();
-        $okRepository = $fileRepository->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType, $pathRepository);
-        if($okRepository){
-            $response .= "Ready module Repository <br>";
+        if($repository_ck){
+            $fileRepository = new GenerateToApiRepository();
+            $okRepository = $fileRepository->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType, $pathRepository);
+            if($okRepository){
+                $response .= "Ready module Repository <br>";
+            }
         }
 
 
@@ -175,28 +201,30 @@ class ToApiRepository
         /****************
          * ROUTES
          ****************/
-        $fileBackEnd = new GenerateToApiRoute();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathRoute);
-        if($okBackEnd){
-            $response .= "Ready module API Back <br>";
+        if($route_ck){
+            $fileBackEnd = new GenerateToApiRoute();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathRoute);
+            if($okBackEnd){
+                $response .= "Ready module API Back <br>";
+            }
         }
-
 
 
 
         /****************
          * MIGRATION
          ****************/
-        $fileBackEnd = new GenerateToApiMigration();
-        $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
-            $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
-            $tableNameWithGuionPlural, $relationClass, $relationType, $pathMigration);
-        if($okBackEnd){
-            $response .= "Ready module API Back <br>";
+        if($migration_ck){
+            $fileBackEnd = new GenerateToApiMigration();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathMigration);
+            if($okBackEnd){
+                $response .= "Ready module API Back <br>";
+            }
         }
-
 
 
 
@@ -226,9 +254,38 @@ class ToApiRepository
         }
 
 
+        /****************
+         * Seeder
+         ****************/
+        if($seeder_ck){
+            $fileBackEnd = new GenerateToApiSeeder();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathSeeder);
+            if($okBackEnd){
+                $response .= "Ready module Seeder <br>";
+            }
+        }
 
 
-        //echo $response;
+        /****************
+         * Factory
+         ****************/
+        if($factory_ck){
+            $fileBackEnd = new GenerateToApiFactory();
+            $okBackEnd = $fileBackEnd->__invoke($tableSingular, $tablePlural, $columns, $nameSpace, $templateType,
+                $classNameSingularUp, $classNamePluralUp, $tableNameWithGuion,
+                $tableNameWithGuionPlural, $relationClass, $relationType, $pathFactory);
+            if($okBackEnd){
+                $response .= "Ready module Factory <br>";
+            }
+        }
+
+
+
+        //TODO pendiente  $testunit_ck
+
+
 
 
     }
