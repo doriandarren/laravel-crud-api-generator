@@ -283,7 +283,7 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
 
-        
+
 
         // Block
         $contents .= HelperFiles::formatLineBreakAndTab('<div class="form-group mb-6">', null, 1, 4);
