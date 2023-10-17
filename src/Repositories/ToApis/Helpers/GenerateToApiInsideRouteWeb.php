@@ -319,7 +319,7 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('type="text"', null, 1, 6);
         $contents .= HelperFiles::formatLineBreakAndTab('class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"', null, 1, 6);
         $contents .= HelperFiles::formatLineBreakAndTab('id="name_space"', null, 1, 6);
-        $contents .= HelperFiles::formatLineBreakAndTab('value="Api"', null, 1, 6);
+        $contents .= HelperFiles::formatLineBreakAndTab('value="API"', null, 1, 6);
         $contents .= HelperFiles::formatLineBreakAndTab('>', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('</div>', null, 1, 4);
 
@@ -640,7 +640,7 @@ class GenerateToApiInsideRouteWeb
         $contents .= HelperFiles::formatLineBreakAndTab('$templateType = $request->template_type;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$nameSpace = $request->name_space;', null, 1, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('$columns = json_decode(json_encode($request->columns));', null, 2, 2);
-        
+
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('// checkboxes', null, 1, 2);

@@ -52,7 +52,7 @@ class TestController {
     public function __invoke(){
     
         (new Scripts())->__invoke();
-        echo "Ready!";
+        echo "Done!";
         
     }
     

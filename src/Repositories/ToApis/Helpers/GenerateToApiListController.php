@@ -30,7 +30,15 @@ class GenerateToApiListController
 
         // Header
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
+
+        if($nameSpace !== ''){
+            $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . ';', null, 2);
+        }else{
+            $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
+        }
+
+
+
 
         // Use
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Http\JsonResponse;', null, 1);
@@ -77,9 +85,10 @@ class GenerateToApiListController
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
 
 
-
         //End Class
         $contents .= HelperFiles::formatLineBreakAndTab('}');
+
+
 
 
         try {
