@@ -122,11 +122,11 @@ Nota: Para nueva version, creae una "tag" y volver a subir la version
 
 ```sh
 
-git tag -d 1.0.
+git tag -d 1.0
 
 Para agregar por el PhpStorm.
 
-Borrar dl github el tag.
+Borrar del github el tag.
 
 
 ```

@@ -39,7 +39,6 @@ class GenerateToApiRepository
         }
 
 
-
         /**
          * Header
          */
@@ -72,7 +71,7 @@ class GenerateToApiRepository
 
 
         /**
-         * List By User
+         * List By Manager
          */
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* By Manager', null, 1, 1);
@@ -108,6 +107,31 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
+
+
+
+
+        /**
+         * List By Driver
+         */
+        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* By Driver', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_DRIVER . '($'.EnumFolderToApi::USE_TO_COMPANY.'): mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
+
+
+
+
 
 
 
@@ -233,8 +257,26 @@ class GenerateToApiRepository
         $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_USER . '($'.EnumFolderToApi::USE_TO_ROLE.', $id): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $'.EnumFolderToApi::USE_TO_ROLE.')', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_ROLE.'\', $'.EnumFolderToApi::USE_TO_ROLE.')', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+
+
+
+
+        /**
+         * Show By Driver
+         */
+        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' .EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $id', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_DRIVER . '($'.EnumFolderToApi::USE_TO_COMPANY.', $id): mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $'.EnumFolderToApi::USE_TO_COMPANY.')', null, 1, 5);
+        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 5);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -245,19 +287,19 @@ class GenerateToApiRepository
          * Store
          */
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $attribute', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $data', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @return ' . $classNameSingularUp, null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function store($attribute): ' . $classNameSingularUp, null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function store($data): ' . $classNameSingularUp, null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab("$".$tableSingular."New = new ". $classNameSingularUp ."();",null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$objNew = new '. $classNameSingularUp ."();",null,1,2);
 
         foreach($columns as $col){
-            $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.'New->'.$col->name.' = $attribute->'.$col->name.';',null,1,2);
+            $contents .= HelperFiles::formatLineBreakAndTab('$objNew->'.$col->name.' = $data->'.$col->name.';',null,1,2);
         }
 
-        $contents .= HelperFiles::formatLineBreakAndTab("$" . $tableSingular . "New->save();",null,1,2);
-        $contents .= HelperFiles::formatLineBreakAndTab("return $" . $tableSingular . "New;",null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$objNew->save();',null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $objNew;',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -267,28 +309,28 @@ class GenerateToApiRepository
          */
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @param $id', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $attributes', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @param $data', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function update($id, $attributes): mixed', null, 1, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('public function update($id, $data): mixed', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('if(is_array($attributes)){', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$' . $tableSingular . ' = json_decode(json_encode($attributes), FALSE);', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('if(is_array($data)){', null, 1, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$obj = json_decode(json_encode($data), FALSE);', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('}else{', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$' . $tableSingular . ' = $attributes;', null, 1, 3);
+        $contents .= HelperFiles::formatLineBreakAndTab('$obj = $data;', null, 1, 3);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('$' . $tableSingular . 'Old = ' . $classNameSingularUp . '::find($id);', null, 2, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$objOld = ' . $classNameSingularUp . '::find($id);', null, 2, 2);
 
         foreach($columns as $col){
-            $contents .= HelperFiles::formatLineBreakAndTab('if(isset($'.$tableSingular.'->'.$col->name.')){',null,1,2);
-            $contents .= HelperFiles::formatLineBreakAndTab('if($'.$tableSingular.'->'.$col->name.' != \'\' && !empty($'. $tableSingular .'->'.$col->name.')){',null,1,3);
-            $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.'Old->'.$col->name.' = $'.$tableSingular.'->'.$col->name.';',null,1,4);
+            $contents .= HelperFiles::formatLineBreakAndTab('if(isset($obj->'.$col->name.')){',null,1,2);
+            $contents .= HelperFiles::formatLineBreakAndTab('if($obj->'.$col->name.' != \'\' && !empty($obj->'.$col->name.')){',null,1,3);
+            $contents .= HelperFiles::formatLineBreakAndTab('$objOld->'.$col->name.' = $obj->'.$col->name.';',null,1,4);
             $contents .= HelperFiles::formatLineBreakAndTab('}',null,1,3);
             $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,2);
         }
 
-        $contents .= HelperFiles::formatLineBreakAndTab('$'. $tableSingular .'Old->save();',null,2,2);
-        $contents .= HelperFiles::formatLineBreakAndTab('return $'.$tableSingular.'Old;',null,2,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$objOld->save();',null,2,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $objOld;',null,2,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
@@ -335,13 +377,13 @@ class GenerateToApiRepository
 
         $contents .= HelperFiles::formatLineBreakAndTab('public function set'.$classNameSingularUp.'(' . trim($str) . '): '.$classNameSingularUp,null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.' = new '.$classNameSingularUp.'();',null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('$obj = new '.$classNameSingularUp.'();',null,1,2);
 
         foreach ($columns as $col) {
-            $contents .= HelperFiles::formatLineBreakAndTab('$'.$tableSingular.'->'.$col->name.' = $'.$col->name.';',null,1,2);
+            $contents .= HelperFiles::formatLineBreakAndTab('$obj->'.$col->name.' = $'.$col->name.';',null,1,2);
         }
 
-        $contents .= HelperFiles::formatLineBreakAndTab('return $'.$tableSingular.';',null,1,2);
+        $contents .= HelperFiles::formatLineBreakAndTab('return $obj;',null,1,2);
         $contents .= HelperFiles::formatLineBreakAndTab('}',null,2,1);
 
 
