@@ -32,7 +32,6 @@ class GenerateToApiDestroyController
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
         $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
 
-
         // Use
         $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNamePluralUp . '\\' . $classNameSingularUp . ';', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Http\JsonResponse;', null, 1);
