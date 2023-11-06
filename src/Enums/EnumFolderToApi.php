@@ -36,6 +36,7 @@ abstract class EnumFolderToApi
     const AUTH_BY_USER = 'ByRoleUser';
 
 
+
     const USE_TO_ROLE = 'employee_id';
     const USE_TO_COMPANY = 'company_id';
 

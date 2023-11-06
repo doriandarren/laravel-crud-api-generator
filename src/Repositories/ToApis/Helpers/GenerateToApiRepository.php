@@ -115,19 +115,19 @@ class GenerateToApiRepository
         /**
          * List By Driver
          */
-        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* By Driver', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_DRIVER . '($'.EnumFolderToApi::USE_TO_COMPANY.'): mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
-
+//        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* By Driver', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' . EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('public function list' . EnumFolderToApi::AUTH_BY_DRIVER . '($'.EnumFolderToApi::USE_TO_COMPANY.'): mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $' . EnumFolderToApi::USE_TO_COMPANY . ')', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->latest()', null, 1, 5);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->limit(EnumApiSetup::QUERY_LIMIT)', null, 1, 5);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->get();', null, 1, 5);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+//
 
 
 
@@ -267,17 +267,17 @@ class GenerateToApiRepository
         /**
          * Show By Driver
          */
-        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' .EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @param $id', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_DRIVER . '($'.EnumFolderToApi::USE_TO_COMPANY.', $id): mixed', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $'.EnumFolderToApi::USE_TO_COMPANY.')', null, 1, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 5);
-        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @param $' .EnumFolderToApi::USE_TO_COMPANY, null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @param $id', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('* @return mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('public function show' . EnumFolderToApi::AUTH_BY_DRIVER . '($'.EnumFolderToApi::USE_TO_COMPANY.', $id): mixed', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('{', null, 1, 1);
+//        $contents .= HelperFiles::formatLineBreakAndTab('return '. $classNameSingularUp .'::where(\'id\', $id)', null, 1, 2);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->where(\''.EnumFolderToApi::USE_TO_COMPANY.'\', $'.EnumFolderToApi::USE_TO_COMPANY.')', null, 1, 5);
+//        $contents .= HelperFiles::formatLineBreakAndTab('->first();', null, 2, 5);
+//        $contents .= HelperFiles::formatLineBreakAndTab('}', null, 2, 1);
 
 
 
