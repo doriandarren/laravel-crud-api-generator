@@ -30,7 +30,7 @@ class GenerateToApiDestroyController
 
         // Header
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $nameSpace . '\\' .$classNamePluralUp . ';', null, 2);
 
         // Use
         $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNamePluralUp . '\\' . $classNameSingularUp . ';', null, 1);
@@ -46,7 +46,7 @@ class GenerateToApiDestroyController
         $contents .= HelperFiles::formatLineBreakAndTab('class '. $classNameSingularUp . EnumFolderToApi::DESTROY. 'Controller extends Controller',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,2);
 
-        $contents .= HelperFiles::formatLineBreakAndTab('private $repository;',null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('private ' . ucfirst($tableSingular) . 'Repository $repository;',null,1,1);
 
         $contents .= HelperFiles::formatLineBreakAndTab('public function __construct()',2,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('{',null,1,1);

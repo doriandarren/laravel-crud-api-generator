@@ -56,7 +56,7 @@ class GenerateToApiListController
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('private $repository;',null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('private ' . ucfirst($tableSingular) . 'Repository $repository;',null,1,1);
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('public function __construct()',2,1,1);

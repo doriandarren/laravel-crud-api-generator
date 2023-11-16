@@ -31,7 +31,7 @@ class GenerateToApiListPaginateController
 
         // Header
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
-        $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $classNamePluralUp . ';', null, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('namespace App\Http\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . ';', null, 2);
 
         // Use
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Http\JsonResponse;', null, 1);
@@ -49,7 +49,7 @@ class GenerateToApiListPaginateController
 
 
 
-        $contents .= HelperFiles::formatLineBreakAndTab('private $repository;',null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('private ' . ucfirst($tableSingular) . 'Repository $repository;',null,1,1);
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('public function __construct()',2,1,1);
