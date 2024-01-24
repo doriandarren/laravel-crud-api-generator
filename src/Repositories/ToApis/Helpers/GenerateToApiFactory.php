@@ -66,19 +66,20 @@ class GenerateToApiFactory
 
         try {
 
-            $path = $path . '/' . $classNamePluralUp;
-            
-            if(!file_exists($path)){
-                mkdir($path, 0777, true);
+            $p = $path . '/' . $classNamePluralUp;
+
+            if(!file_exists($p)){
+                mkdir($p, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/' . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
+            $fh = fopen($p . '/' . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
             fwrite($fh, $contents)or die("Error write file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
             fclose($fh);
 
             return true;
 
         }catch (\Exception $e){
+            error_log($e->getMessage() . ' path: ' . $p, 0);
             return false;
         }
 

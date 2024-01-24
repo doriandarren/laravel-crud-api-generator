@@ -34,12 +34,12 @@ class GenerateToApiRoute
 
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumAbilitySuffix;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumApiSetup;',null,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller;',null,1);
         //$contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::LIST_PAGINATE . 'Controller;',null,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::SHOW . 'Controller;',null,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller;',null,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller;',null,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::SHOW . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::STORE . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::UPDATE . 'Controller;',null,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::DESTROY . 'Controller;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\\Support\\Facades\\Route;',null,2);
 
 
