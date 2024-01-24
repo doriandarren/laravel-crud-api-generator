@@ -19,9 +19,9 @@ class GenerateToApiFactory
 
         $contents .= HelperFiles::formatLineBreakAndTab('namespace Database\Factories\\' . $classNamePluralUp . ';', null, 2);
 
-        $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Database\Eloquent\Factories\Factory;', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Database\Eloquent\Factories\Factory;', null, 2);
         //$contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNameSingularUp . ';', null, 2);
-        
+
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\\' . $classNamePluralUp . '\\' . $classNameSingularUp . '>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1);
@@ -79,8 +79,7 @@ class GenerateToApiFactory
             return false;
         }
 
-
-
+        
 
     }
 
