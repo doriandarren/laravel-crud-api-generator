@@ -31,7 +31,6 @@ class GenerateToApiRoute
 
         $contents = HelperFiles::formatLineBreakAndTab('<?php',null,3);
 
-
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumAbilitySuffix;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumApiSetup;',null,1);
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Http\\Controllers\\' . $nameSpace . '\\' . $classNamePluralUp . '\\' . $classNameSingularUp . EnumFolderToApi::LIST . 'Controller;',null,1);
