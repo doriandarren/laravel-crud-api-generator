@@ -28,7 +28,6 @@ class GenerateToApiRoute
                              $classNamePluralUp, $tableNameWithGuion, $tableNameWithGuionPlural, $relationClass,
                              $relationType, $path): bool
     {
-
         $contents = HelperFiles::formatLineBreakAndTab('<?php',null,3);
 
         $contents .= HelperFiles::formatLineBreakAndTab('use App\\Enums\\EnumAbilitySuffix;',null,1);
