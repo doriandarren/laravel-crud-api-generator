@@ -57,7 +57,7 @@ class GenerateToApiFactory
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('}', null, 1);
-        
+
 
         try {
 
@@ -77,7 +77,6 @@ class GenerateToApiFactory
             error_log($e->getMessage() . ' path: ' . $p, 0);
             return false;
         }
-
 
 
     }
