@@ -70,7 +70,7 @@ class GenerateToApiFactory
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/' . $classNamePluralUp . '/' . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
+            $fh = fopen($path . '/' . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
             fwrite($fh, $contents)or die("Error write file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
             fclose($fh);
 

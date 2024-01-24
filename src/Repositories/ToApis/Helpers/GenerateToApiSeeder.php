@@ -28,7 +28,6 @@ class GenerateToApiSeeder
 
 
 
-
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('* Run the database seeds.', null, 1, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*', null, 1, 1);
