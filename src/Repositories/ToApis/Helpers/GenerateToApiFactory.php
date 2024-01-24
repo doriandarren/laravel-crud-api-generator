@@ -27,7 +27,7 @@ class GenerateToApiFactory
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\\' . $classNamePluralUp . ' \\' . $classNameSingularUp . '>', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\\' . $classNamePluralUp . '\\' . $classNameSingularUp . '>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1);
 
 

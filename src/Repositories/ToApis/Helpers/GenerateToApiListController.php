@@ -87,7 +87,7 @@ class GenerateToApiListController
 
         //End Class
         $contents .= HelperFiles::formatLineBreakAndTab('}');
-        
+
 
 
         try {
