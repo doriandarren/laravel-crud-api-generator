@@ -15,15 +15,12 @@ class GenerateToApiFactory
                              $classNamePluralUp, $tableNameWithGuion, $tableNameWithGuionPlural, $relationClass,
                              $relationType, $path)
     {
-
-
         $contents = HelperFiles::formatLineBreakAndTab("<?php", null, 2);
 
-        $contents .= HelperFiles::formatLineBreakAndTab('namespace Database\Factories;', null, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('namespace Database\Factories\\' . $classNamePluralUp . ';', null, 2);
 
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Database\Eloquent\Factories\Factory;', null, 1);
         //$contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNameSingularUp . ';', null, 2);
-
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1);
