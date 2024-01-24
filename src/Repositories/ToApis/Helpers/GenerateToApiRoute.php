@@ -71,8 +71,7 @@ class GenerateToApiRoute
         $contents .= HelperFiles::formatLineBreakAndTab('});',null,1);
 
 
-
-
+        
         try {
 
             if(!file_exists($path)){
