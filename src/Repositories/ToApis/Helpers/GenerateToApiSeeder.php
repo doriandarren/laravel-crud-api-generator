@@ -19,7 +19,7 @@ class GenerateToApiSeeder
         $contents .= HelperFiles::formatLineBreakAndTab('namespace Database\Seeders;', null, 2);
 
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Database\Seeder;', null, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNameSingularUp . ';', null, 2);
+        $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNamePluralUp . '\\' . $classNameSingularUp . ';', null, 2);
 
 
 
