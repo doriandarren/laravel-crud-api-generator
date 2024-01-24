@@ -71,7 +71,7 @@ Route::get('/test', [\App\Http\Controllers\Dev\TestController::class, '__invoke'
 
 
 
-5.- Add inside "app/Http\Middleware\VerifyCsrfToken" exception "VerifyCsrfToken.php"
+5.- Add inside "app\Http\Middleware\VerifyCsrfToken" exception "VerifyCsrfToken.php"
 
 ```sh
 

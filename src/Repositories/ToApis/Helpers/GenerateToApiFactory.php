@@ -22,12 +22,12 @@ class GenerateToApiFactory
         $contents .= HelperFiles::formatLineBreakAndTab('namespace Database\Factories;', null, 2);
 
         $contents .= HelperFiles::formatLineBreakAndTab('use Illuminate\Database\Eloquent\Factories\Factory;', null, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNameSingularUp . ';', null, 2);
+        //$contents .= HelperFiles::formatLineBreakAndTab('use App\Models\\' . $classNameSingularUp . ';', null, 2);
 
 
 
         $contents .= HelperFiles::formatLineBreakAndTab('/**', null, 1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\\' . $classNameSingularUp . '>', null, 1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\\' . $classNamePluralUp . ' \\' . $classNameSingularUp . '>', null, 1);
         $contents .= HelperFiles::formatLineBreakAndTab('*/', null, 1);
 
 
@@ -70,7 +70,7 @@ class GenerateToApiFactory
                 mkdir($path, 0777, true);
             }
             // Write File
-            $fh = fopen($path . '/' . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
+            $fh = fopen($path . '/' . $classNamePluralUp . '/' . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php', 'w+') or die("Error open file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
             fwrite($fh, $contents)or die("Error write file: " . $classNameSingularUp . EnumFolderToApi::FACTORY . '.php');
             fclose($fh);
 
