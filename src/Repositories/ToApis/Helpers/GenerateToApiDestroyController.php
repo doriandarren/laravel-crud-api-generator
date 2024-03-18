@@ -56,7 +56,8 @@ class GenerateToApiDestroyController
 
         // Destroy
         $contents .= HelperFiles::formatLineBreakAndTab('/**',null,1,1);
-        $contents .= HelperFiles::formatLineBreakAndTab('* @header Bearer BEARER_AUTH ',null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @header Authorization Bearer TOKEN ',null,1,1);
+        $contents .= HelperFiles::formatLineBreakAndTab('* @urlParam id required The ID of the table.',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('*',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('*',null,1,1);
         $contents .= HelperFiles::formatLineBreakAndTab('* @param Request $request',null,1,1);
